@@ -2,7 +2,7 @@
 
     "name" : "Petunjuk Pratikum resistor dan kapasotor",
     "short_name" : "Petunjuk Praktikum",
-    "start_url" : "coba143.html", 
+    "start_url" : "index.html", 
     "display": "standalone",
     "$description" : "Petunjuk Pratikum resistor dan kapasotor",
     "icons": [
