@@ -1,0 +1,3662 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#cacaca"/>
+    <link rel="manifest" href="manifest.json">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding:0;
+        }
+        :root{
+          --gradient:linear-gradient(to right, #ACB6E5, #74ebd5);
+          --gradient1:linear-gradient(to left, #ACB6E5, #74ebd5);
+          --warna:#F2F2F2;
+        }
+        body{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+        }
+        .loading{
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          height: 100%;
+          width: 100%;
+          background-color:#FEC163;
+        }
+        .icon1{
+          height: 50%;
+          width: 50%;
+        }
+        .icon2{
+          height: 60%;
+          width: 60%;
+        }
+        .icon3{
+          height: 60%;
+          width: 60%;
+        }
+        .icon4{
+          height: 100%;
+          width: 10%;
+        }
+        .svg{
+          height: 100%;
+          width: 50%;
+        }
+        /* .cobasimulasi{
+          display: none;
+          background-color: red;
+          z-index: 10;
+          height: 100%;
+          position: fixed;
+          width: 100%;
+        } */
+        .containerTombol{
+          height: 70%;
+          width: 70%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          flex-direction: column;
+          /* background-color: #FEC163; */
+        }
+        span {
+        margin: 1%;
+        font-size: 30px;
+        cursor: pointer;
+        }
+        #ui{
+            background: #74ebd5;  /* fallback for old browsers */
+            background: -webkit-linear-gradient(to right, #ACB6E5, #74ebd5);  /* Chrome 10-25, Safari 5.1-6 */
+            background:  var(--warna);/* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+            background-size: 200%;
+            animation: gradient-animation 25s infinite alternate;
+            display: none;
+            height: 100%;
+            width: 100%;
+        }
+        @keyframes gradient-animation{
+          0%{background-position: right;
+          }
+          100%{
+            background-position: left;
+          }
+        }
+        .spanside{
+          display: flex;
+          width: 100%;
+          /* background-color: #ccc; */
+          flex-direction: column-reverse;
+          position: absolute;
+          top: 0;
+          justify-content:flex-start;
+          align-items: flex-start;
+          /* right: 0; */
+          /* left: 30px; */
+          padding-left: 90%;
+        }
+        .sidenav {
+        position: absolute;
+        height: 100%;
+        width: 0%;
+        position:fixed;
+        z-index: 1;
+        top: 0;
+        left: 0;
+        background-color: #edaf53;
+        overflow-x: hidden;
+        /* transition: 0.5s; */
+        padding-top: 60px;
+        }
+        .sidenav a {
+        /* padding: 8px 8px 8px 32px; */
+        text-decoration: none;
+        font-size: 25px;
+        color: #111;
+        display: block;
+        transition: 0.3s;
+        margin-bottom: 10%;
+        display: flex;
+        align-items: center;
+        padding-left: 4%;
+        }
+        .sidenav a:hover {
+        color: #3c3a3a;
+        }
+        .closebtn {
+        /* position: absolute;
+        top: 20px;
+        right: 20px;
+        font-size: 36px;
+        margin-left: 50px; */
+        color: #111;
+        /* right: 0; */
+        }
+        .petunjukmedia,.tentangpengembang,.daftarpustaka{
+        height: 100%;
+        width:0;
+        position:fixed;
+        z-index: 2;
+        top: 0;
+        left: 0;
+        /* background-color: var(--gradient1); */
+        background: var(--warna);
+        overflow: hidden;
+        /* transition: 0.5s;
+        padding-top: 60px; */
+        display: flex;
+        }
+        .containerdaftarpustaka{
+          padding: 5%;
+        }
+        .deskripsitp p{
+          text-indent: 0px;
+          font-size: small;
+        }
+        #span1{
+          width: 15%;
+          height: 15%;
+          background-color: #FEC163;
+          border-radius: 2%;
+        }
+      .line1 {
+      width: 85%;
+      height: 85%;
+      border: 4px solid #FEC163;
+      position: fixed;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      display: flex;
+      justify-content: center;
+    }
+    .line2 {
+      width: 70%;
+      height: 75%;
+      border: 4px solid #4b4b4b;
+      position: fixed;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      display: flex;
+      justify-content: center;
+      /* align-items: center; */
+      flex-direction: column;
+    }
+    ul{
+    list-style-type: none;
+    /* padding-left: 0; */
+    text-align: justify;
+    margin-left: 0px;
+}
+
+/* li {
+    margin-bottom: 10px;
+} */
+.containerpetunjukmedia{
+  display: flex;
+  /* align-items: center; */
+  /* background-color: #007bff; */
+  height:100%;
+  width: 100%;
+}
+li img {
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 10px;
+    width: 20px; /* Sesuaikan ukuran gambar dengan kebutuhan Anda */
+    height: 20px; /* Sesuaikan ukuran gambar dengan kebutuhan Anda */
+}
+        .hidden {
+            display: none;
+        }
+        .hidden1 {
+            display: none;
+        }
+        #header{
+            display: flex;
+            flex-direction: row;
+            /* margin: 5px; */
+            height: 7vh;
+            align-items: center;
+        }
+        .titleheader{
+          margin: 1%;
+          width: 80%;
+        }
+        /* audio */
+            .playButton{
+            background-color: green;
+            border-radius: 15%;
+            height: 60%;
+            width: 10%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            /* margin: 0.5%; */
+          }
+          .active {
+          background-color:red ;
+          border-radius: 15%;
+          height: 60%;
+          width: 10%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          }
+
+          .inactive {
+          background-color:  green;
+          border-radius: 15%;
+          height: 60%;
+          width: 10%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          }
+        /* pop up */
+        #popup {
+          display: none;
+          /* position: fixed; */
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background-color: rgba(0, 0, 0, 0.5);
+          z-index: 99;
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform:translate(-50%, -50%);
+        }
+        #openPopup{
+          height: 100%;
+          align-items: center;
+          display: flex;
+          justify-content: center;
+        }
+        #popupContent {
+          background-color: #FEC163;
+          width: 85%;
+          margin: 60% auto;
+          padding: 20px;
+          text-align: center;
+          position: relative;
+          z-index: 99;
+          border-radius: 5%;
+        }
+
+        #closePopup {
+          position: absolute;
+          top: 0px;
+          right: 0px;
+          z-index: 99;
+          height: 20%;
+          background-color: red;
+          border-radius: 50%;
+        }
+        #mainer{
+          display: flex;
+          flex-direction: column;
+          height: 85vh;
+          position: relative;
+        }
+
+        .tombol{
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform:translate(-50%, -50%);
+        }
+        .kotaktombol{
+            height: 15%;
+            width: 35%;
+            color: rgb(0, 0, 0);
+            background-color: #FEC163;
+            margin: 30% 7%;
+            align-items: center;
+            border-radius: 15%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+        .maincontent{
+          width: 80%;
+          height: 82vh;
+          /* overflow-y: scroll; */
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform:translate(-50%, -50%);
+        }
+        /* containerofmodul */
+        .containermodul,.containermodul1{
+          height: 85vh;
+          display: flex;
+          /* display: none; */
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+        }
+        .titleofcontainermodul,
+        .titleofcontainermodul1{
+          position: fixed;
+          top: 0;
+        }
+        .titleseriresistor,.titleserikapasitor{
+          display: none;
+        }
+        .centered{
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          margin-bottom: 30px;
+          /* padding: 100px; */
+          background-color: #4CAF50;
+          color: white;
+          padding: 5%;
+          border-radius: 5%;
+        }
+        .mainofcontainermodul-a{
+          height: 70vh;
+          width: 100%;
+          background-color: #FEC163;
+          justify-content: center;
+          flex-direction: column;
+          align-items: center;
+          border-radius: 3%;
+        }
+        .mainofcontainermodul1-a{
+          height: 70vh;
+          width: 100%;
+          background-color: #FEC163;
+          justify-content: center;
+          flex-direction: column;
+          align-items: center;
+          border-radius: 3%;
+        }
+        .tugaspendahuluan,.tugaspendahuluan1{
+          padding: 5%;
+          height: 70vh;
+          width: 100%;
+          background-color: #FEC163;
+          /* justify-content: center; */
+          /* display: flex; */
+          flex-direction: column;
+          /* align-items: center; */
+          /* display: none; */
+          border-radius: 3%;
+        }
+        .tujuanresistor,.tujuankapasitor{
+          padding: 5%;
+          height: 70vh;
+          width: 100%;
+          background-color: #FEC163;
+          justify-content: center;
+          /* display: flex; */
+          flex-direction: column;
+          align-items: center;
+          /* display: none; */
+          border-radius: 3%;
+        }
+        .alatbahanresistor,.alatbahankapasitor{
+          padding: 5%;
+          height: 70vh;
+          width: 100%;
+          background-color:#FEC163;
+          justify-content: center;
+          /* display: flex; */
+          flex-direction: column;
+          align-items: center;
+          /* display: none; */
+          border-radius: 3%;
+        }
+        .metodeseriresistor,.metodeserikapasitor{
+          padding: 5%;
+          height: 72vh;
+          width: 100%;
+          background-color: #FEC163;
+          /* justify-content: center; */
+          /* display: flex; */
+          flex-direction: column;
+          /* align-items: center; */
+          /* display: none; */
+          overflow-y: scroll;
+        }
+        .metodepararelresistor,.metodepararelkapasitor{
+          padding: 5%;
+          height: 72vh;
+          width: 100%;
+          background-color:#FEC163;
+          /* justify-content: center; */
+          /* display: flex; */
+          flex-direction: column;
+          /* align-items: center; */
+          /* display: none; */
+          overflow-y: scroll;
+        }
+        #res3,#res4,#res8,#kap3,#kap4,#kap8{
+          height: 75vh;
+          width: 100%;
+          border-radius: 3%;
+        }
+        .contentofpraktikumseri,.contentofpraktikumseri1{
+          background-color: #FEC163;
+          height: 100%;
+          width: 100%;
+          display: flex;
+          align-items: center;
+          flex-direction: column;
+          justify-content: center;
+          border-radius: 3%;
+        }
+        .contentofpraktikumpararel,.contentofpraktikumpararel1{
+          background-color: #FEC163;
+          height: 100%;
+          width: 100%;
+          display: flex;
+          align-items: center;
+          flex-direction: column;
+          justify-content: center;
+          border-radius: 3%;
+        }
+        .mainofcontainermodul-b{
+          height: 70vh;
+          width: 100%;
+          background-color: #FEC163;
+          justify-content: center;
+          flex-direction: column;
+          align-items: center;
+          /* display: flex; */
+        }
+        .mainofcontainermodul1-b{
+          height: 70vh;
+          width: 100%;
+          background-color:#FEC163 ;
+          justify-content: center;
+          flex-direction: column;
+          align-items: center;
+          /* display: flex; */
+          border-radius: 3%;
+        }
+        .mainofcontainermodul1{
+          height: 70vh;
+          width: 100%;
+          background-color: #FEC163;
+          justify-content: center;
+          flex-direction: column;
+          align-items: center;
+          display: flex;
+          border-radius: 3%;
+        }
+        .contentofpraktikum,.contentofpraktikum1{
+          padding: 5%;
+          height: 70vh;
+          width: 100%;
+          background-color:#FEC163;
+          justify-content: center;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          /* display: none; */
+          border-radius: 3%;
+        }
+        .mainoftugaspendahuluan,.mainoftugaspendahuluan1{
+          padding: 0 5%;
+        }
+        .elementofcontainermoduls,.elementofcontainermoduls1{
+          height: 100%;
+          width: 100%;
+          display: flex;
+          align-items: center;
+          flex-direction: column;
+          justify-content: center;
+        }
+        .elementofcontainermodul,.elementofcontainermodul1{
+          background-color: #555;
+          color: white;
+          height: 20%;
+          /* background-color: white; */
+          text-align: center;
+          width: 80%;
+          border-radius: 4%;
+          margin: 5%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+        .buttonpraktikum,.buttonpraktikum1{
+          /* display: none; */
+          height: 100%;
+          width: 100%;
+          display: flex;
+          align-items: center;
+          flex-direction: column;
+          justify-content: center;
+        }
+        .elementofbuttonpraktikum,.elementofbuttonpraktikum1{
+          background-color: #555;
+          color: white;
+          height: 20%;
+          /* background-color: white; */
+          text-align: center;
+          width: 80%;
+          border-radius: 4%;
+          margin: 5%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+        .containerofpraktikum,.containerofpraktikum1{
+          display: none;
+        }
+        .elementofcontainerofpraktikum,.elementofcontainerofpraktikum1{
+          background-color: #555;
+          color: white;
+          height: 20%;
+          /* background-color: white; */
+          text-align: center;
+          width: 80%;
+          border-radius: 4%;
+          margin: 5%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+        .contentofpraktikum,.contentofpraktikum1{
+          padding: 5%;
+          height: 70vh;
+          width: 100%;
+          background-color: #FEC163;
+          /* justify-content: center; */
+          /* display: flex; */
+          flex-direction: column;
+          /* align-items: center; */
+          display: none;
+          border-radius: 3%;
+        }
+        /* modul */
+        .modul{
+          width: 95%;
+          padding: 3%;
+          height: 75vh;
+          background-color: #FEC163;
+          overflow-y: scroll;
+        }
+        .contentmodul{
+          width: 100%;
+          height: 100%;
+          /* display: flex; */
+          flex-direction: column;
+        }
+        .headermodul{
+          position: sticky;
+          top: 0;
+          background-color: var(--warna);
+          /* padding: 100% 10% 10% 10%; */
+          border: 2px solid #4CAF50;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          width: 100%;
+        }
+        .imgmodul{
+          width: 80%;
+          margin-left: 5%;
+        }
+        h1 {
+          font-size: 30px;
+          font-weight: bold;
+          margin-top: 10px;
+          margin-bottom: 0px;
+        }
+        h2 {
+          font-size: 20px;
+          font-weight: bold;
+          margin-top: 10px;
+          margin-bottom: 0px;
+        }
+        p {
+          font-size: 16px;
+          line-height: 1.5;
+          margin-bottom: 10px;
+          text-align: justify;
+          text-indent: 30px;
+        }
+        /* ol{
+          margin-left: 10px;
+        } */
+        /* ul{
+          font-size: 16px;
+          line-height: 1.5;
+          margin-bottom: 10px;
+          text-align: justify;
+          margin-left: 50px;
+        } */
+        li{
+          font-size: 16px;
+          line-height: 1.5;
+          margin-bottom: 5px;
+          text-align: justify;
+          margin-left: 10px;
+        }
+        /* simulasi */
+        .simulasi{
+            /* position: absolute; */
+            /* margin-top: 20px; */
+            /* max-height: 500px;
+            max-width: 400px; 
+            min-width: 350px; */
+            background-color: #FEC163;
+            /* display: flex; */
+            flex-direction: column;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform:translate(-50%, -50%);
+            height: 100%;
+            width: 100%;
+        }
+        .tombolsimulasi{
+          align-items: center;
+          justify-content: center;
+        }
+        canvas{
+          width: 100%;
+        }
+        .contentofsimulasiserikapasitor,
+        .contentofsimulasiseriresistor,
+        .contentofsimulasipararelresistor,
+        .contentofsimulasipararelkapasitor{
+          flex-direction: column;
+          background-color: #FEC163;
+          /* display: flex; */
+          height: 100%;
+          width: 100%;
+          /* padding: 5%; */
+          text-align: center;
+          margin-top: 3%;
+        }
+        .judulsimulasi1,
+        .judulsimulasi2,
+        .judulsimulasi3,
+        .judulsimulasi4{
+          flex-direction: column;
+          background-color: #FEC163;
+          height: 28%;
+          padding: 0 5%;
+        }
+        .img-alat{
+          width: 20%;
+          height: 10%;
+        }
+        #seriresistor,
+        #serikapasitor,
+        #pararelresistor,
+        #pararelkapasitor{
+          display: flex;
+          flex-direction: column;
+          padding: 3%;
+          /* align-items: center; */
+          justify-content: center;
+          margin-top: 20%;
+        }        
+        /* .simulasi .hidden{
+          display: none;
+        } */
+        .tombolsimulasi{
+            /* display: flex; */
+            /* display: none; */
+            justify-content: center;
+            align-items: center;
+            /* margin: 5%; */
+            height: 100%;
+            flex-direction: column;
+            margin: 5%;
+            /* flex-wrap: wrap; */
+        }
+        .contentoftombolsimulasi{
+           display: flex;
+            justify-content: center;
+            align-items: center;
+            /* margin: 5%; */
+            height: 100%;
+            flex-direction: column;
+            margin: 5%;
+        }
+    .simulasiheader{
+      /* position: absolute;
+      top: 0; */
+                display: flex;
+          flex-direction: column;
+          align-items: center;
+          margin-bottom: 30px;
+          /* padding: 100px; */
+          background-color: #4CAF50;
+          color: white;
+          padding: 5%;
+      border-radius: 5%;
+    }
+    .tablink {
+      background-color: #555;
+      color: white;
+      border: none;
+      outline: none;
+      cursor: pointer;
+      width: 80%;
+      height: 15%;
+      margin: 3%;
+      border-radius: 5%;
+    }
+
+    /* Change background color of buttons on hover */
+    .tablink:hover {
+      background-color: #777;
+    }
+
+    /* Style the tab content */
+    .tabcontent {
+      /* display: none; */
+      padding: 5%;
+      /* text-align: center;
+      flex-direction: column; */
+      margin-top: 20%;
+    }
+    .contentofsimulasi{
+      display: none;
+      height: 100%;
+      width: 100%;
+      background-color: #28a745;
+    }
+
+    /* slider */
+            .slider-container {
+            position: relative;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+        }
+
+        .slider {
+            width: 100%;
+            height: 10px;
+            border-radius: 5px;
+            background: #d3d3d3;
+            outline: none;
+            opacity: 0.7;
+            -webkit-transition: .2s;
+            transition: opacity .2s;
+        }
+
+        .slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #4CAF50;
+            cursor: pointer;
+        }
+
+        .slider::-moz-range-thumb {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #4CAF50;
+            cursor: pointer;
+        }
+
+        .slider-label {
+            margin-left: 10px;
+        }
+        .flex-slider{
+          display: flex;
+        }
+      /* quiz */
+    .quizapp{
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform:translate(-50%, -50%);
+      height: 50%;
+      width: 100%;
+    }
+.containerquiz {
+  /* display: flex; */
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  /* height: 100vh; */
+  background-color: #f2f2f2;
+  /* position: absolute;
+  top: 50%;
+  left: 50%;
+  transform:translate(-50%, -50%); */
+}
+.containerquiz .hidden{
+   display: flex;
+}
+
+
+/* Header Quiz */
+.headerquiz {
+  font-size: 48px;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* Sub Header Quiz */
+.subheaderquiz {
+  font-size: 24px;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+/* Pilihan Quiz */
+.pilihanquiz {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+/* Quiz Resistor dan Kapasitor */
+.quizresistor,
+.quizkapasitor {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 25%;
+  /* height: 100px; */
+  margin: 20px;
+  border-radius: 10px;
+  font-size: 24px;
+  font-weight: bold;
+  color: white;
+  cursor: pointer;
+}
+
+.quizresistor {
+  background-color: #007bff;
+}
+
+.quizkapasitor {
+  background-color: #28a745;
+}
+
+/* Media Queries */
+@media screen and (max-width: 768px) {
+  /* Kontainer Utama */
+  .containerquiz {
+    padding: 2px;
+  }
+
+  /* Header Quiz */
+  .headerquiz {
+    font-size: 36px;
+  }
+
+  /* Sub Header Quiz */
+  .subheaderquiz {
+    font-size: 20px;
+  }
+
+  /* Quiz Resistor dan Kapasitor */
+  .quizresistor,
+  .quizkapasitor {
+    width: 150px;
+    height: 75px;
+    font-size: 18px;
+    margin: 10px;
+  }
+}
+/* resistor */
+.containerquizresistor, .containerquizkapasitor {
+  width: 100%;
+  margin: 0 auto;
+  padding: 20px;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  /* height: 100vh; */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform:translate(-50%, -50%);
+}
+
+/* .containerquizresistor .hidden, .containerquizkapasitor .hidden {
+display: none;
+} */
+
+/* Header styles */
+.containerquizresistor h1, .containerquizkapasitor h1 {
+  font-size: 36px;
+  margin-bottom: 20px;
+}
+
+/* Question styles */
+.question-containerresistor, .question-containerkapasitor {
+  margin-bottom: 20px;
+}
+
+#questionresistor, #questionkapasitor {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+#choicesresistor, #choiceskapasitor {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+#choicesresistor li, #choiceskapasitor li {
+  font-size: 18px;
+  margin-bottom: 10px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  cursor: pointer;
+}
+
+#choicesresistor li:hover, #choiceskapasitor li:hover {
+  background-color: #f2f2f2;
+}
+
+/* Result styles */
+#resultresistor, #resultkapasitor {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+/* Timer styles */
+#timerresistor, #timerkapasitor {
+  font-size: 18px;
+  margin-bottom: 20px;
+}
+
+/* Button styles */
+/* #submitresistor, #submitkapasitor {
+  font-size: 24px;
+  padding: 10px 20px;
+  border: none;
+  background-color: #4CAF50;
+  color: white;
+} */
+.button{
+  border-radius: 10%;
+  height: 60%;
+  width: 60%;
+  cursor: pointer;
+}
+
+#submitresistor:hover, #submitkapasitor:hover {
+  background-color: #e4b021;
+}
+
+@media screen and (max-width: 600px) {
+  /* Question styles for small screens */
+  #questionresistor,#questionkapasitor {
+    font-size: 20px;
+  }
+
+  #choicesresistor li, #choiceskapasitor {
+    font-size: 16px;
+    padding: 5px;
+  }
+
+  /* Timer styles for small screens */
+  #timerresistor, #timerkapasitor {
+    font-size: 16px;
+  }
+
+  /* Button styles for small screens */
+  #submitresistor, #submitkapasitor {
+    font-size: 20px;
+    padding: 5px 10px;
+  }
+}
+
+#footer{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  height: 8vh;
+  flex-wrap: nowrap;
+  background-color: var(--warna);
+}
+/* nav{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 0% 30%;
+  height: 100%;
+  width: 100%;
+} */
+/* nav div{
+  margin:0 50px;
+  flex-basis: 33%;
+  text-decoration: none;
+} */
+.elips{
+  width: 20%;
+  height: 60%;
+  border-radius: 10%;
+  background-color: #FEC163;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 5%;
+}
+.containerelips1{
+  display: none;
+  justify-content: center;
+  align-items: center;
+}
+.containerelips2{
+  display: none;
+  justify-content: center;
+  align-items: center;
+}
+.containerelips3{
+  display: none;
+  justify-content: center;
+  align-items: center;
+}
+.elips1{
+  width: 15%;
+  height: 20%;
+  border-radius: 10%;
+  background-color: #FEC163;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 5%;
+}
+
+    </style>
+</head>
+<body>
+    <div id="loading">
+      <div class="loading">
+        <h2>loading</h2>
+      </div>
+    </div>
+    <div class="sidenav">
+      <div class="spanside">
+        <!-- <div><img src="./icon/circuit1.png" alt=""></div> -->
+        <!-- <p>pp</p>
+        <p>iii</p>
+        <p>245</p> -->
+          <div class="closebtn" onclick="closeNav1()"><img class="icon4" src="./icon/close.svg" alt=""></div>
+      </div>
+        <a href="#" onclick="petunjukmedia()"><img class="icon4" src="./icon/pm.svg" alt="">PETUNJUK MEDIA</a>
+        <a href="#" onclick="tentangpengembang()"> <img class="icon4" src="./icon/man.svg" alt="">TENTANG PENGEMBANG</a>
+        <a href="#" onclick="daftarpustaka()"><img class="icon4" src="./icon/read_book_icon.svg" alt="">DAFTAR PUSTAKA</a>
+    </div>
+    <div class="petunjukmedia">
+      <div class="spanside">
+        <span class="closebtn" onclick="closeNav()"><img class="icon4" src="./icon/close.svg" alt=""></span>
+      </div>
+      
+      <div class="line1">
+        <h2 style="font-family: serif; ">Petunjuk Media<h2/>
+      </div>
+      <div class="line2">
+        <div class="containerpetunjukmedia">
+          <ul class="ulpm">
+            <li><img class="icon" src="./icon/home.svg" alt="Icon 4"> tombol menu utama</li>
+            <li><img class="icon" src="./icon/back.svg" alt="Icon 1"> tombol kembali</li>
+            <li><img class="icon" src="./icon/next.svg" alt="Icon 4"> tombol selanjutnya</li>
+            <li><img class="icon" src="./icon/buku.svg" alt="Icon 4"> modul resistor</li>
+            <li><img class="icon" src="./icon/book_icon.svg" alt="Icon 4"> Modul kapasitor</li>
+            <li><img class="icon" src="./icon/simul.svg" alt="Icon 4"> tombol menu simulasi</li>
+            <li><img class="icon" src="./icon/quiz.svg" alt="Icon 4"> tombol menu quiz</li>
+            <li><img class="icon" src="./icon/pm.svg" alt="Icon 4"> tombol petunjuk media</li>
+            <li><img class="icon" src="./icon/man.svg" alt="Icon 4"> tombol tentang pengembang</li>
+            <li><img class="icon" src="./icon/read_book_icon.svg" alt="Icon 4"> tombol daftar pustaka</li>
+            <li><img class="icon" src="./icon/resistor_icon.svg" alt="Icon 4"> tombol menu quiz resistor</li>
+            <li><img class="icon" src="./icon/logo_capacitor_icon.svg" alt="Icon 4"> tombol menu quiz kapasitor</li>
+            <li><img class="icon" src="./icon/mulai.svg" alt="Icon 4"> tombol untuk memulai quiz</li>
+        </ul>
+        </div>
+
+      </div>
+    </div>
+    <div class="tentangpengembang">
+      <div class="spanside">
+         <span class="closebtn" onclick="closeNav()"><img class="icon4" src="./icon/close.svg" alt=""></span>
+      </div>
+     
+       <div class="line1">
+         <h2 style="font-family: serif; ">Tentang Pengembang<h2/>
+       </div>
+       <div class="line2">
+        <img src="./foto/pengembang.png" height="45%">
+        <div class="deskripsitp" style="padding: 5%;">
+          <p>Nama : Muhammad Dul Qornain</p>
+          <p>email : mdzulqornain20@gmail.com</p>
+          <p>Riwayat Pendidikan :</p>
+          <p>1. SDN Sukamanah</p>
+          <p>2. MTsN Ciwaringin</p>
+          <p>3. MAN 2 Cirebon</p>
+        </div>
+
+       </div>
+    </div>
+    <div class="daftarpustaka">
+      <div class="spanside">
+         <span class="closebtn" onclick="closeNav()"><img class="icon4" src="./icon/close.svg" alt=""></span>
+      </div>
+      <div class="line1">
+        <h2 style="font-family: serif;">Daftar Pustaka<h2/>
+      </div>
+         
+       <div class="line2">
+        <div class="containerdaftarpustaka">
+          <p>Abdullah, Mikrajuddin. 2017. Fisika Dasar II. Intitut Teknologi Bandung : Bandung</p>
+          <p>Haliday, Resnick. 1998. Fisika Jilid 2 (terjemahan). Erlangga: Jakarta</p>
+        <p>Quthni, Darul. 2017. Pengukuran dan Penggunaan Komponen Resistor, Kapasitor dan Dioda. Direktorat Pembinaan Sekolah Menengah Kejuruan 
+Komplek Kementerian Pendidikan dan Kebudayaan : Jakarta</p>
+        <P>Tim Dosen Fisika UIN Walisongo. 2022. PETUNJUK PRAKTIKUM FISIKA DASAR II. UIN Walisongo : Semarang</P>
+        </div>
+       
+       </div>
+    </div>
+    <div id="ui">
+        <div id="popup">
+          <div id="popupContent">
+            <h2>Aapakah anda yakin untuk keluar dari aplikasi ?</h2>
+            <p>untuk keluar dari aplikasi anda bisa menekan tombol back pada HP android </p>
+            <div id="closePopup"><img class="svg" src="./icon/close.svg" alt=""></div>
+          </div>
+        </div>
+        <div id="content">
+            <div id="header">
+              <span onclick="openNav()" height="80%">☰</span>
+              <img src="./foto/logouin.png" height="100%">
+              <div class="titleheader"><h4>PETUNJUK PRAKTIKUM</h4></div>
+              <audio id="audio" loop>
+                <source src="./icon/audio.mp3" type="audio/mp3">
+                Your browser does not support the audio element.
+              </audio>
+              <div id="playButton" class="playButton">
+                  <img  " src="./icon/playmusic.svg">     
+              </div>
+              <div id="openPopup"><img class="svg" src="./icon/close.svg" alt="" srcset=""> </div>
+            </div>
+            <div id="mainer">
+              <div id="tombol" class="tombol maincontent">
+                <div  class="kotaktombol" id="kotaktombol1">
+                  <div class="containerTombol">
+                    <img class="icon1" src="./icon/buku.svg" alt="">
+                    <br>
+                    <div>RESISTOR</div>
+                  </div>
+                </div>
+                <div class="kotaktombol" id="kotaktombol2">
+                  <div class="containerTombol">
+                    <img class="icon1" src="./icon/book_icon.svg" alt="">
+                    <br>
+                    <div>KAPASITOR</div>
+                  </div>
+
+                </div>
+                <div class="kotaktombol" id="kotaktombol3">
+                  <div class="containerTombol">
+                    <img class="icon1" src="./icon/simul.svg" alt="">
+                    <br>
+                    <div>SIMULASI</div>
+                  </div>   
+                </div>
+                <div class="kotaktombol" id="kotaktombol4">
+                  <div class="containerTombol">
+                    <img class="icon1" src="./icon/quiz.svg" alt="">
+                    <br>
+                    <div>QUIZ</div>
+                  </div>
+
+                </div>
+              </div>
+              <div id="content1" class="hidden maincontent">
+                <div class="containermodul">
+                  <div class="titleofcontainermodul">
+                    <div class="title1"><h3>PRAKTIKUM RESISTOR</h3></div>
+                    <div class="title2" style="display: none;"><h3>SERI RESISTOR</h3></div>
+                    <div class="title3" style="display: none;"><h3>PARAREL RESISTOR</h3></div>
+                  </div>
+                  <div class="mainofcontainermodul-a pageResistor navigationResistor" id="navigationResistor" >
+                    <div class="elementofcontainermoduls" >
+                      <div class="elementofcontainermodul shortcutButton2" id="btntugaspendahuluan" >TUGAS PENDAHULUAN</div>
+                      <div class="elementofcontainermodul shortcutButton2" id="btnteori">TEORI</div>
+                      <div class="elementofcontainermodul shortcutButton2" id="btnpraktikum">PRAKTIKUM</div>
+                    </div>
+                  </div>
+                  <div class="tugaspendahuluan pageResistor" >
+                    <div class="centered">
+                      <h3>Tugas Pendahuluan</h3>
+                      <h3>Rangkain Resistor</h3>
+                    </div>
+                    <div class="mainoftugaspendahuluan">
+                      <h4>
+                      <ol>
+                            <li>
+                              Sebutkan besaran yang akan diukur pada praktikum rangkaian seri dan paralel resistor?
+                            </li>
+                            <li>
+                              Uraikan hubungan antara tegangan, arus dan hambatan listrik pada praktikum rangkaian seri dan paralel resistor?  
+                            </li>
+                            <li>
+                              Jelaskan secara singkat analisis data hasil pengukuran dan perhitungan praktikum rangkaian seri dan paralel resistor? 
+                            </li>
+                        </ol>
+                    </h4>
+                    </div>
+
+                  </div>
+                  <div class="modul pageResistor modulresistor">
+                      
+                      <!-- <div class="headermodul"><h2>Modul Resistor</h2></div> -->
+                      <div class="contentmodul">
+                        <div class="centered">
+                          <h2>Teori Rangkain Resistor</h2>
+                        </div>
+                        <p>Resistor adalah komponen dasar elektronika yang digunakan untuk membatasi jumlah arus yang mengalir dalam suatu rangkaian. Secara umum resistor dibagi menjadi dua; resitor yang bisa diatur nilai tahannya, disebut <i>variabel resistance</i>  atau  lebih dikenal dengan potensiometer, dan resistor yang tidak bisa diatur nilai tahananya, yakni <i>fixed resistance</i>.</p>
+                        <p>Resistor yang beredar dipasara tidak selalu mencatumkan nilai resistansinya dengan bilangan, ada juga yang menggunakan gelang warna. banyaknya gelang warna pada gelang resistor adalah 4, dan ada juga yang mempunyai 5 gelang warna.
+                          Resistansi yang mempunyai 5 cincin terdiri dari cincin 1 , 2 dan 3 adalah cincin digit, cincin 4 sebagai pengali serta cincin 5 adalah toleransi. 
+                          Resistansi yang mempunyai 4 cincin terdiri dari cincin 1 , 2 adalah sebagai digit, 
+                          cincin 3 adalah cincin pengali dan cincin 4 sebagai toleransi.</p>
+                          
+                          <img class="imgmodul" src="./foto/tabel resistor.png" alt="">
+                          <p><b>Tabel nilai warna gelang pada resistor</b></p>
+                          <img class="imgmodul" src="./foto/resistor gelang.png" alt="">
+                          <p><b>Gambar Kode warna pada resistor</b></p>
+                        <p>  Kemampuan resitor dalam menahan arus yang masuk pada suatu rangkaian sebanding dengan hasil bagi tegangan (V) dengan kuat arus (I), pernyataan ini kita kenal dengan Hukum Ohm.
+                          Hasil bagi antara tegangan (V) dan kuat arus (I) memberikan hasil yang konstan (tetap) yang dapat kita sebut sebagai hambatan listrik (R) dengan satuan ohm (Ω). Hubungan matematik antara hambatan (R), tegangan (V) dan kuat arus (I) dapat dituliskan sebagai berikut.</p>
+                          <p>
+                          <math class="equation">
+                            <mrow>
+                              <mi>R</mi>
+                              <mo>=</mo>
+                              <mfrac>
+                                <mrow>
+                                  <mi>V</mi>
+                                  <mi></mi>
+                                </mrow>
+                                <mi>I</mi>
+                              </mfrac>
+                            </mrow>
+                          </math>
+                          </p>
+                          <p>Dalam praktikum ini kita akan menunjukkan hubungan ketiganya dalam rangakain susunan seri dan paralel. Beberapa resistor yang dihubungkan sedemikian hingga menghasilkan satu jalur saja untuk mengalirkan muatan disebut susunan seri. Sedangkan resistor yang susunannya menghasilkan lebih dari satu jalur sehingga aliran muatannya terbagi disebut susunan paralel. Pada rangkaian seri, besarnya arus (I) bernilai sama di setiap titik. sedangkan Pada rangkaian paralel besar tegangan (V) di setiap titik bernilai sama. </p>
+                          <p>Hasil bagi antara tegangan (V) dan kuat arus (I) memberikan hasil yang konstan (tetap) yang dapat kita sebut sebagai hambatan listrik (R) dengan satuan ohm (Ω). Hubungan matematik antara hambatan (R), tegangan (V) dan kuat arus (I) dapat dituliskan sebagai berikut.</p>
+                          <p>Untuk mengukur nilai muatan yang mengalir (kuat arus), digunakan amperemeter yang tersusun secara seri dengan rangkaian, sedangkan untuk mengukur beda potensial digunakan voltmeter yang tersusun secara paralel dengan rangkaian.</p>
+                      </div>
+                  </div>
+                  <div class="mainofcontainermodul-b pageResistor" id="res3" >
+                    <div class="buttonpraktikum" >
+                      <div class="elementofbuttonpraktikum btnseri shortcutButton2">SERI RESISTOR</div>
+                      <div class="elementofbuttonpraktikum btnpararel shortcutButton2">PARAREL RESISTOR</div>
+                    </div>
+                  </div>
+                  <div class="pageResistor" id="res4">
+                    <div class="contentofpraktikumseri">
+                      <div class="centered">
+                        <h3>Rangkain Seri Resistor</h3>
+                      </div>
+                      <div class="elementofcontainerofpraktikum shortcutButton2" id="tujuanseri">TUJUAN</div>
+                      <div class="elementofcontainerofpraktikum shortcutButton2" id="alatseri">ALAT & BAHAN</div>
+                      <div class="elementofcontainerofpraktikum shortcutButton2" id="metodeseri">METODE</div>
+                    </div>
+                  </div>
+                  <div class="pageResistor" id="res8">
+                    <div class="contentofpraktikumpararel">
+                      <div class="centered">
+                        <h3>Rangkain Pararel Resistor</h3>
+                      </div>
+                      <div class="elementofcontainermodul tujuan shortcutButton2" id="tujuanpararel">TUJUAN</div>
+                      <div class="elementofcontainermodul alatbahan shortcutButton2" id="alatpararel">ALAT & BAHAN</div>
+                      <div class="elementofcontainermodul metode shortcutButton2" id="metodepararel">METODE</div>
+                    </div>
+                  </div> 
+                  <div class="tujuanresistor pageResistor" id="res5">
+                      <div class="centered">
+                        <h3>TUJUAN PRAKTIKUM </h3>
+                        <h3>Rangkain Seri Resistor</h3>
+                      </div>
+                    <div class="mainoftugaspendahuluan">
+                      <h4>
+                      <ol>
+                          <li>Memahami susunan dasar rangkaian listrik</li>
+                          <li>Menunjukkan hubungan antara tegangan, arus dan, hambatan listrik</li>
+                          <li>Menentukan nilai tegangan, arus dan, hambatan listrik dalam susunan seri dan paralel</li>
+                        </ol>
+                    </h4>
+                    </div>
+
+                  </div>
+                  <div class="alatbahanresistor pageResistor" id="res6">
+                      <div class="centered">
+                        <h3>ALAT & BAHAN</h3>
+                        <h3>Rangkain Seri Resistor</h3>
+                      </div>
+                    <div class="mainoftugaspendahuluan">
+                      <h4>
+                      <ol>
+                            <li>Papan rangkaian </li>
+                          <img class="img-alat" src="./foto/project board_11zon.jpg" alt="">
+                            <li>Jembatan penghubung</li>
+                            <img class="img-alat" src="./foto/kabel penghubung_11zon.jpg" alt="">
+                            <li>Multimeter</li>
+                            <img  class="img-alat" src="./foto/Multimeter_11zon.jpg" alt="">
+                            <li>Resistor </li>
+                            <img class="img-alat" src="./foto/gambar resistor_11zon.jpg" alt="">
+                            <li>Catu daya listrik arus searah (DC)</li>
+                            <img class="img-alat" src="./foto/Catu_Daya_11zon.jpg" alt="">
+                        </ol>
+                    </h4>
+                    </div>
+
+                  </div>
+                  <div class="metodeseriresistor pageResistor" id="res7">
+                      <div class="centered">
+                        <h3>METODE PERCOBAAN</h3>
+                        <h3>Rangkain Seri Resistor</h3>
+                      </div>
+                    <div class="mainoftugaspendahuluan">
+                      <h4>
+                      <ol>
+                            <li>Susunlah rangkaian seperti gambar di bawah ini.</li>
+                            <img class="imgmodul" src="./foto/rangkaian1.png" alt="">
+                            <li>Hidupkan catu daya  lalu tutup saklar S. Baca alat ukur  tegangan untuk kapasitor di C1  yaitu di titik A-B.</li>
+                            <li>Buka saklar S kemudian pindahkan voltmeter dan  ke titik B – C.</li>
+                            <li>Baca alat ukur voltmeter pada C<sub>2</sub></li>
+                            <li>Buka saklar S kemudian pindahkan voltmeter ke titik A – C. Baca alat ukur voltmeter masing-masing sebagai Vtot.</li>
+                            <li>Ulangi langkah-langkah di atas dengan sumber tegangan yang berbeda.</li>
+                        </ol>
+                    </h4>
+                    </div>
+                  </div>
+
+                  <div class="tujuanresistor pageResistor" id="res9">
+                      <div class="centered">
+                        <h3>TUJUAN</h3>
+                        <h3>Rangkain Pararel Resistor</h3>
+                      </div>
+                    <div class="mainoftugaspendahuluan">
+                      <h4>
+                      <ol>
+                          <li>Memahami susunan dasar rangkaian listrik</li>
+                          <li>Menunjukkan hubungan antara tegangan, arus dan, hambatan listrik</li>
+                          <li>Menentukan nilai tegangan, arus dan, hambatan listrik dalam susunan seri dan paralel</li>
+                        </ol>
+                    </h4>
+                    </div>
+
+                  </div>
+                  <div class="alatbahanresistor pageResistor" id="res10">
+                    <div class="centered">
+                      <h3>ALAT & BAHAN</h3>
+                      <h3>Rangkain Pararel Resistor</h3>
+                    </div>
+                    <div class="mainoftugaspendahuluan">
+                      <h4>
+                      <ol>
+                            <li>Papan rangkaian </li>
+                          <img class="img-alat" src="./foto/project board_11zon.jpg" alt="">
+                            <li>Jembatan penghubung</li>
+                            <img class="img-alat" src="./foto/kabel penghubung_11zon.jpg" alt="">
+                            <li>Multimeter</li>
+                            <img  class="img-alat" src="./foto/Multimeter_11zon.jpg" alt="">
+                            <li>Resistor </li>
+                            <img class="img-alat" src="./foto/gambar resistor_11zon.jpg" alt="">
+                            <li>Catu daya listrik arus searah (DC)</li>
+                            <img class="img-alat" src="./foto/Catu_Daya_11zon.jpg" alt="">
+                        </ol>
+                    </h4>
+                    </div>
+
+                  </div>
+                  <div class="metodepararelresistor pageResistor" id="res11">
+                    <div class="centered">
+                      <h3>METODE PERCOBAAN</h3>
+                      <h3>Rangkain Pararel Resistor</h3>
+                    </div>
+                    <div class="mainoftugaspendahuluan">
+                      <h4>
+                      <ol>
+                            <li>Susun rangkaian seperti gambar di samping ini.</li>
+                            <img class="imgmodul" src="./foto/rangkaian2.png" alt="">
+                            <li>Hidupkan catu daya kemudian tutup saklar S.</li>
+                            <li>Baca tegangan pada C<sub>1</sub>.</li>
+                            <li>Buka 	saklar 	kemudian 	pindahkan voltmeter  ke titik C – D. </li>
+                            <li>Baca tegangan pada C<sub>2</sub>. </li>
+                            <li>Buka 	saklar 	kemudian 	pindahkan voltmeter ke titik P – Q.</li>
+                            <li>Baca tegangan seluruh rangkaian masing-masing sebagai Vtot.</li>
+                            <li>Ulangi langkah di atas dengan sumber tegangan yang berbeda.</li>
+                        </ol>
+                    </h4>
+                    </div>
+
+                  </div>
+                </div>
+
+              </div>
+              <div id="content2" class="hidden maincontent">
+                <div class="containermodul1">
+                  <div class="titleofcontainermodul1">
+                    <div class="title11"><h3>KAPASITOR</h3></div>
+                    <div class="title21" style="display: none;"><h3>SERI KAPASITOR</h3></div>
+                    <div class="title31" style="display: none;"><h3>PARAREL KAPASITOR</h3></div>
+                  </div>
+                  <div class="mainofcontainermodul1-a pageKapasitor navigationKapasitor" id="navigationKapasitor">
+                    <div class="elementofcontainermoduls1">
+                      <div class="elementofcontainermodul1 shortcutButton3" id="btntugaspendahuluan1" >TUGAS PENDAHULUAN</div>
+                      <div class="elementofcontainermodul1 shortcutButton3" id="btnteori1">TEORI</div>
+                      <div class="elementofcontainermodul1 shortcutButton3" id="btnpraktikum1">PRAKTIKUM</div>
+                  </div>
+
+                  </div>
+                  <div class="tugaspendahuluan1 pageKapasitor">
+                    <div class="centered">
+                      <h3>Tugas Pendahuluan</h3>
+                      <h3>Rangkain Kapasitor</h3>
+                    </div>
+                    <div class="mainoftugaspendahuluan1">
+                      <h4>
+                      <ol>
+                            <li>
+                              Sebutkan besaran yang akan diukur pada praktikum rangkaian seri dan paralel kapasitor? 
+                            </li>
+                            <li>
+                              Uraikan hubungan antara tegangan, arus dan kapasitansi kapasitor pada praktikum rangkaian seri dan paralel yang telah dilakukan? 
+                            </li>
+                            <li>
+                              Jelaskan secara singkat analisis data hasil pengukuran dan perhitungan praktikum rangkaian seri dan paralel? 
+                            </li>
+                        </ol>
+                    </h4>
+                    </div>
+
+                  </div>
+                  <div class="modul pageKapasitor modulkapasitor">
+                      
+                      <!-- <div class="headermodul"><h2>Modul Kapasitor</h2></div> -->
+                      <div class="contentmodul1">
+                        
+                        <div class="centered">
+                          <h3>Teori</h3>
+                          <h3>Rangkain Kapasitor</h3>
+                        </div>
+                        <br>
+                        <p>  Kapasitor adalah piranti yang berguna untuk menyimpan muatan dan energi. Kapasitor terdiri dari dua konduktor yang berdekatan tapi terisolasi satu sama lain dan membawa muatan sama besar dan berlawanan. Kapasitor terdiri dari dua keping konduktor yang sejajar dan dipisahkan oleh material non konduktor yang disebut dengan dielektrik. </p>
+                        <br>
+                          <p>Kemampuan kapasitor untuk menyimpan muatan dan energi disebut dengan kapasitas kapasitor. Besarnya kapasitas kapasitor adalah “perbandingan antara banyaknya muatan listrik (Q) yang tersimpan dalam kapasitor dengan beda potensial (V) yang timbul pada ujung-ujung kapasitor.” Pernyataan di atas dapat ditulis dengan persamaan: </p>
+                          <p>
+                            <math class="equation">
+                            <mrow>
+                              <mi>C</mi>
+                              <mo>=</mo>
+                              <mfrac>
+                                <mrow>
+                                  <mi>Q</mi>
+                                  <mi></mi>
+                                </mrow>
+                                <mi>V</mi>
+                              </mfrac>
+                            </mrow>
+                            </math>
+                          </p>
+                          <br>
+                          <p>Pada kapasitor keping sejajar yang mempunyai luas penampang besarnya kapasitas kapasitor dapat dituliskan dengan persamaan: </p>
+                          <p>	<math class="equation">
+                                <mrow>
+                                  <mi>C</mi>
+                                  <mo>=</mo> <mo>kƐ</mo>
+                                  <mfrac>
+                                    <mrow>
+                                      <mi>A</mi>
+                                    </mrow>
+                                    <mi>d</mi>
+                                  </mfrac>
+                                </mrow>
+                              </math></p>
+                          <p>Besarnya energi listrik yang tersimpan dalam kapasitor adalah sama dengan usaha yang dilakukan untuk memindahkan muatan listrik dari sumber tegangan ke dalam kapasitor. </p>
+                          <p>Persamaan energi yang tersimpan dalam kapasitor adalah: </p>
+                          <p>	<math class="equation">
+                                <mrow>
+                                  <mi>W</mi>
+                                  <mo>=</mo> 
+                                  <mfrac>
+                                    <mrow>
+                                      <mi>1</mi>
+                                    </mrow>
+                                    <mi>2</mi>
+                                  </mfrac>
+                                  <mo><msup><mi>CV</mi><mn>2</mn></msup></mo>
+                                </mrow>
+                              </math>
+                            </p>
+                          <p>Seperti resistor, kapasitor juga dapat disusun secara seri dan parallel. Muatan pada setiap kapasitor adalah sama dengan muatan pengganti dalam rangkaian seri. 
+                          Sedangkan pada rangkaian parallel, besarnya beda potensial pada setiap kapasitor sama dengan besarnya beda potensial pengganti rangkaian paralel. 
+                          </p>
+                      </div>
+                  </div>
+                  <div class="mainofcontainermodul1-b pageKapasitor">
+                    <div class="buttonpraktikum1">
+                      <div class="elementofbuttonpraktikum btnseri1 shortcutButton3">SERI</div>
+                      <div class="elementofbuttonpraktikum btnpararel1 shortcutButton3">PARAREL</div>
+                    </div>
+                  </div>
+                  <div class="pageKapasitor" id="kap4">
+                    <div class="contentofpraktikumseri1">
+                      <div class="centered">
+                        <h3>Rangkain Seri Kapasitor</h3>
+                      </div>
+                      <div class="elementofcontainerofpraktikum1 shortcutButton3" id="tujuanseri1">TUJUAN</div>
+                      <div class="elementofcontainerofpraktikum1 shortcutButton3" id="alatseri1">AALAT & BAHAN</div>
+                      <div class="elementofcontainerofpraktikum1 shortcutButton3" id="metodeseri1">METODE</div>
+                    </div>
+                  </div>
+                  <div class="pageKapasitor" id="kap8">
+                    <div class="contentofpraktikumpararel1">
+                      <div class="centered">
+                        <h3>Rangkain Pararel Kapasitor</h3>
+                      </div>
+                      <div class="elementofcontainermodul1 tujuan1 shortcutButton3" id="tujuanpararel1">TUJUAN</div>
+                      <div class="elementofcontainermodul1 alatbahan1 shortcutButton3" id="alatpararel1">ALAT & BAHAN</div>
+                      <div class="elementofcontainermodul1 metode1 shortcutButton3" id="metodepararel1">METODE</div>
+                    </div> 
+                  </div>
+                  <div class="tujuankapasitor pageKapasitor" id="kap5">
+                    <div class="centered">
+                      <h3>TUJUAN PRAKTIKUM </h3>
+                      <h3>Rangkain Seri Kapasitor</h3>
+                    </div>
+                    <div class="mainoftugaspendahuluan1">
+                      <h4>
+                      <ol>
+                          <li>Memahami susunan dasar rangkaian kapasitor.</li>
+                          <li>Menunjukkan hubungan antara tegangan dan muatan listrik</li>
+                          <li>Menentukan nilai kapasitansi kapasitor dalam susunan seri dan paralel</li>
+                        </ol>
+                    </h4>
+                    </div>
+                  </div>
+                  <div class="alatbahankapasitor pageKapasitor" id="kap6">
+                    <div class="centered">
+                      <h3>ALAT & BAHAN</h3>
+                      <h3>Rangkain Seri Kapasitor</h3>
+                    </div>
+                    <div class="mainoftugaspendahuluan1">
+                      <h4>
+                      <ol>
+                            <li>Papan rangkaian </li>
+                          <img class="img-alat" src="./foto/project board_11zon.jpg" alt="">
+                            <li>Jembatan penghubung</li>
+                            <img class="img-alat" src="./foto/kabel penghubung_11zon.jpg" alt="">
+                            <li>Multimeter</li>
+                            <img  class="img-alat" src="./foto/Multimeter_11zon.jpg" alt="">
+                            <li>Kapasitor 1 μF, 100 μF, dan 1000μF</li>
+                            <img class="img-alat" src="./foto/kapasitor_11zon.jpg" alt="">
+                            <li>Catu daya listrik arus searah (DC)</li>
+                            <img class="img-alat" src="./foto/Catu_Daya_11zon.jpg" alt="">
+                        </ol>
+                    </h4>
+                    </div>
+
+                  </div>
+                  <div class="metodeserikapasitor pageKapasitor" id="kap7">
+                    <div class="centered">
+                      <h3>METODE PERCOBAAN </h3>
+                      <h3>Rangkain Seri Kapasitor</h3>
+                    </div>
+                    <div class="mainoftugaspendahuluan1">
+                      <h4>
+                      <ol>
+                            <li>Susunlah rangkaian seperti gambar di bawah ini.</li>
+                            <img class="imgmodul" src="./foto/rangkaian3.png" alt="">
+                            <li>Hidupkan catu daya  lalu tutup saklar S. Baca alat ukur  tegangan untuk kapasitor di C1  yaitu di titik A-B.</li>
+                            <li>Buka saklar S kemudian pindahkan voltmeter dan  ke titik B – C.</li>
+                            <li>Baca alat ukur voltmeter pada C<sub>2</sub></li>
+                            <li>Buka saklar S kemudian pindahkan voltmeter ke titik A – C. Baca alat ukur voltmeter masing-masing sebagai Vtot.</li>
+                            <li>Ulangi langkah-langkah di atas dengan sumber tegangan yang berbeda.</li>
+                        </ol>
+                    </h4>
+                    </div>
+                  </div>
+                  <div class="tujuankapasitor pageKapasitor" id="kap9">
+                    <div class="centered">
+                      <h3>TUJUAN PRAKTIKUM </h3>
+                      <h3>Rangkain Seri Kapasitor</h3>
+                    </div>
+                    <div class="mainoftugaspendahuluan1">
+                      <h4>
+                      <ol>
+                          <li>Memahami susunan dasar rangkaian kapasitor.</li>
+                          <li>Menunjukkan hubungan antara tegangan dan muatan listrik</li>
+                          <li>Menentukan nilai kapasitansi kapasitor dalam susunan seri dan paralel</li>
+                        </ol>
+                    </h4>
+                    </div>
+                  </div>
+                  <div class="alatbahankapasitor pageKapasitor" id="kap10">
+                    <h3>Alat & Bahan</h3>
+                    <div class="mainoftugaspendahuluan1">
+                      <h4>
+                      <ol>
+                            <li>Papan rangkaian </li>
+                          <img class="img-alat" src="./foto/project board_11zon.jpg" alt="">
+                            <li>Jembatan penghubung</li>
+                            <img class="img-alat" src="./foto/kabel penghubung_11zon.jpg" alt="">
+                            <li>Multimeter</li>
+                            <img  class="img-alat" src="./foto/Multimeter_11zon.jpg" alt="">
+                            <li>Kapasitor 1 μF, 100 μF, dan 1000μF</li>
+                            <img class="img-alat" src="./foto/kapasitor_11zon.jpg" alt="">
+                            <li>Catu daya listrik arus searah (DC)</li>
+                            <img class="img-alat" src="./foto/Catu_Daya_11zon.jpg" alt="">
+                        </ol>
+                    </h4>
+                    </div>
+
+                  </div>
+                  <div class="metodepararelkapasitor pageKapasitor" id="kap11">
+                    <h3>Metode Percobaan</h3>
+                    <div class="mainoftugaspendahuluan1">
+                      <h4>
+                      <ol>
+                            <li>Susun rangkaian seperti gambar di samping ini.</li>
+                            <img class="imgmodul" src="./foto/rangkaian4.png" alt="">
+                            <li>Hidupkan catu daya kemudian tutup saklar S.</li>
+                            <li>Baca tegangan pada C<sub>1</sub>.</li>
+                            <li>Buka 	saklar 	kemudian 	pindahkan voltmeter  ke titik C – D. </li>
+                            <li>Baca tegangan pada C<sub>2</sub>. </li>
+                            <li>Buka 	saklar 	kemudian 	pindahkan voltmeter ke titik P – Q.</li>
+                            <li>Baca tegangan seluruh rangkaian masing-masing sebagai Vtot.</li>
+                            <li>Ulangi langkah di atas dengan sumber tegangan yang berbeda.</li>
+                        </ol>
+                    </h4>
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+              <div id="content3" class="hidden maincontent">
+                  <div class="simulasi" id="simulasi">
+                      <div class="tombolsimulasi pageSimulasi" id="tombolsimulasi">
+                        <div class="contentoftombolsimulasi">
+                          <div class="simulasiheader"><h2>SIMULASI</h2></div>
+                          <button class="tablink tablink1 shortcutButton1" >SERI RESISTOR</button>
+                          <button class="tablink tablink2 shortcutButton1" >SERI KAPASITOR</button>
+                          <button class="tablink tablink3 shortcutButton1" >PARAREL RESISTOR</button>
+                          <button class="tablink tablink4 shortcutButton1" >PARAREL KAPASITOR</button>
+                        </div>
+                      </div>
+                        <div class="contentofsimulasiseriresistor pageSimulasi" id="contentofsimulasiseriresistor">
+                          <div class="judulsimulasi1">
+                            <h3 class="centered" style=" margin-bottom: 5%;">Simulasi Rangkaian Seri Resistor</h3>
+                            <ol>
+                              <li>ubahlah nilai resistor 1 dan 2</li>
+                              <li>ubahlah nilai sumber tegangan</li>
+                              <li>bandingkan nilia V1, V2 apakah sesuai dengan teori?</li>
+                              <li>bandingkan nilia I1, I2 apakah sesuai dengan teori?</li>
+                            </ol>
+                          </div>
+                          <div id="seriresistor" class="tabcontent">
+                              <canvas id="circuit_rs" width="500" height="450"></canvas>
+
+                              <!-- Sliders to control the resistance values -->
+                              <div class="slider-container">
+                                <label class="flex-slider"><div>Resistor&ensp;</div><div>1:</div></label>
+                                <input type="range" min="1" max="9" value="1" class="slider" id="resistor1-slider_rs">
+                                <label for="resistor1-slider_rs" class="slider-label">1</label>
+                              </div>
+                              <div class="slider-container">
+                                <label class="flex-slider"><div>Resistor&ensp;</div><div>2:</div></label>
+                                <input type="range" min="1" max="9" value="1" class="slider" id="resistor2-slider_rs">
+                                <label for="resistor2-slider_rs" class="slider-label">1</label>
+                              </div>
+                              <div class="slider-container">
+                                <label class="flex-slider"><div>Sumber&ensp;</div><div>Tegangan:</div></label>
+                                <input type="range" min="0" max="6" value="0" class="slider"  id="voltage-slider_rs">
+                                <label for="voltage-slider_rs" class="slider-label">0</label>
+                              </div>                           
+                          </div>
+                        </div>
+                        <div class="contentofsimulasiserikapasitor pageSimulasi" id="contentofsimulasiserikapasitor">
+                          <div class="judulsimulasi2">
+                            <h3 class="centered" style="margin-bottom: 2%;" >Simulasi Rangkaian Seri Kapasitor</h3>
+                            <ol>
+                              <li>ubahlah nilai resistor 1 dan 2</li>
+                              <li>ubahlah nilai sumber tegangan</li>
+                              <li>bandingkan nilia V1, V2 apakah sesuai dengan teori?</li>
+                              <li>bandingkan nilia I1, I2 apakah sesuai dengan teori?</li>
+                            </ol>
+                          </div>
+                          <div id="serikapasitor" class="tabcontent">
+                              <canvas id="circuit_ks" width="500" height="450"></canvas>
+                              <!-- Sliders to control the resistance values -->
+                              <div class="slider-container">
+                                <label class="flex-slider"><div>Kapasitor&ensp;</div><div>1:</div></label>
+                                <input type="range" min="1" max="9" value="1"class="slider" id="resistor1-slider_ks">
+                                <label for="resistor1-slider_ks" class="slider-label">1</label>
+                              </div>
+                              <div class="slider-container">
+                                <label class="flex-slider"><div>Kapasitor&ensp;</div><div>2:</div></label>
+                                <input type="range" min="1" max="9" value="1"class="slider" id="resistor2-slider_ks">
+                                <label for="resistor2-slider_ks" class="slider-label">1</label>
+                              </div>
+                              <div class="slider-container">
+                                <label class="flex-slider"><div>Sumber&ensp;</div><div>Tegangan:</div></label>
+                                <input type="range" min="0" max="6" value="0"class="slider" id="voltage-slider_ks">
+                                <label for="voltage-slider_ks" class="slider-label">0</label>
+                              </div>
+                          </div>
+                        </div>
+                        <div class="contentofsimulasipararelresistor pageSimulasi" id="contentofsimulasipararelresistor">
+                          <div class="judulsimulasi3">
+                            <h3 class="centered" style="margin-bottom: 2%;">Simulasi Rangkaian Pararel Resistor</h3>
+                            <ol>
+                              <li>ubahlah nilai resistor 1 dan 2</li>
+                              <li>ubahlah nilai sumber tegangan</li>
+                              <li>bandingkan nilia V1, V2 apakah sesuai dengan teori?</li>
+                              <li>bandingkan nilia I1, I2 apakah sesuai dengan teori?</li>
+                            </ol>
+                          </div>
+                          <div id="Pararelresistor" class="tabcontent">
+                              <canvas id="circuit_sp" width="500" height="450"></canvas>
+                              <!-- Sliders to control the resistance values -->
+                              <div class="slider-container">
+                                <label class="flex-slider"><div>Resistor&ensp;</div><div>1:</div></label>
+                                <input type="range" min="1" max="9" value="1"class="slider" id="resistor1-slider_rp">
+                                <label for="resistor1-slider_rp" class="slider-label">1</label>
+                              </div>
+                              <div class="slider-container">
+                                <label class="flex-slider"><div>Resistor&ensp;</div><div>2:</div></label>
+                                <input type="range" min="1" max="9" value="1"class="slider" id="resistor2-slider_rp">
+                                <label for="resistor2-slider_rp" class="slider-label">1</label>
+                              </div>
+                              <div class="slider-container">
+                                <label class="flex-slider"><div>Sumber&ensp;</div><div>Tegangan:</div></label>
+                                <input type="range" min="0" max="6" value="0"class="slider" id="voltage-slider_rp">
+                                <label for="voltage-slider_rp" class="slider-label">0</label>
+                              </div>     
+                          </div>
+                        </div>
+                        <div class="contentofsimulasipararelkapasitor pageSimulasi" id="contentofsimulasipararelkapasitor">
+                          <div class="judulsimulasi4">
+                            <h3 class="centered" style="margin-bottom: 3%;">Simulasi Rangkaian Pararel Kapasitor</h3>
+                            <ol>
+                              <li>ubahlah nilai resistor 1 dan 2</li>
+                              <li>ubahlah nilai sumber tegangan</li>
+                              <li>bandingkan nilia V1, V2 apakah sesuai dengan teori?</li>
+                              <li>bandingkan nilia I1, I2 apakah sesuai dengan teori?</li>
+                            </ol>
+                          </div>
+                          <div id="pararelkapasitor" class="tabcontent">
+                              <canvas id="circuit_kp" width="500" height="450"></canvas>
+
+                              <!-- Sliders to control the resistance values -->
+                              <div class="slider-container">
+                                <label class="flex-slider"><div>Kapasitor&ensp;</div><div>1:</div></label>
+                                <input type="range" min="1" max="9" value="0"class="slider" id="resistor1-slider_kp">
+                                <label for="resistor1-slider_kp" class="slider-label">1</label>
+                              </div> 
+                              <div class="slider-container">
+                                <label class="flex-slider"><div>Kapasitor&ensp;</div><div>2:</div></label>
+                                <input type="range" min="1" max="9" value="0"class="slider" id="resistor2-slider_kp">
+                                <label for="resistor2-slider_kp" class="slider-label">1</label>
+                              </div>
+                              <div class="slider-container">
+                                <label class="flex-slider"><div>Sumber&ensp;</div><div>Tegangan:</div></label>
+                                <input type="range" min="0" max="6" value="0"class="slider" id="voltage-slider_kp">
+                                <label for="voltage-slider_kp" class="slider-label">0</label>
+                              </div>  
+                          </div>
+                        </div>
+                  </div>
+              </div>
+              <div id="content4" class="hidden maincontent">
+                  <div class="quizapp"  id="quizapp">
+                      <div class="containerquiz" id="containerquiz">
+                          <div class="headerquiz">Quiz Praktikum</div>
+                          <div class="subheaderquiz">klik salah satu tombol dibawah</div>
+                          <div class="subheaderquiz">untuk menguji kemampuanmu terkait materi praktikum</div>
+                          <div class="pilihanquiz">
+                              <div class="quizresistor" id="tombolquizresistor">
+                                <img class="icon3" src="./icon/resistor_icon.svg" alt="">
+                              </div>
+                              <div class="quizkapasitor" id="tombolquizkapasitor">
+                                <img class="icon3" src="./icon/logo_capacitor_icon.svg" alt="">
+                              </div>
+                          </div>
+                      </div>
+                      <div class="containerquizresistor" class="hidden" id="containerquizresistor">
+                          <h1>Resistor</h1>
+                          <div class="question-containerresistor">
+                          <p id="questionresistor"></p>
+                          <ul id="choicesresistor"></ul>
+                          </div>
+                          <p id="resultresistor"></p>
+                          <p id="timerresistor"></p>
+                          <div class="button">
+                            <div id="submitresistor">
+                              <img class="icon3" src="./icon/mulai.svg" alt="">
+                            </div>
+                          </div>
+                      </div>
+                      <div class="containerquizkapasitor" class="hidden" id="containerquizkapasitor">
+                          <h1>Kapasitor</h1>
+                          <div class="question-containerkapasitor">
+                          <p id="questionkapasitor"></p>
+                          <ul id="choiceskapasitor"></ul>
+                          </div>
+                          <p id="resultkapasitor"></p>
+                          <p id="timerkapasitor"></p>
+                          <div class="button">
+                            <div id="submitkapasitor">
+                              <img class="icon3" src="./icon/mulai.svg" alt="">
+                            </div>
+                            <button id="quizAwal" style="display: none;">Quiz</button>
+                          </div>
+                          
+                      </div>
+                  </div>
+              </div>
+            </div>
+            <div id="footer">
+          
+                  <!-- <div class="elips" id="btnBack" style="  font-family: serif;">
+                    <img class="icon2" src="./icon/back.svg" alt="">
+                  </div> -->
+                  <div class="elips" id="btnHome" style=" font-family: serif;">
+                    <img class="icon2" src="./icon/home.svg" alt="">
+                  </div>
+                  <!-- <div class="elips" id="btnNext" style=" font-family: serif;">
+                    <img class="icon2" src="./icon/next.svg" alt="">
+                  </div> -->
+                  <div class="containerelips1">
+                    <div class="elips1" id="btnBack1" style="  font-family: serif;">
+                      <img class="icon2" src="./icon/back.svg" alt="">
+                    </div>
+                    <div class="elips1" id="btnHome1" style=" font-family: serif;">
+                      <img class="icon2" src="./icon/home.svg" alt="">
+                    </div>
+                    <div class="elips1" id="btnNext1" style=" font-family: serif;">
+                      <img class="icon2" src="./icon/next.svg" alt="">
+                    </div>
+                  </div>
+                  <div class="containerelips2">
+                    <div class="elips1" id="btnBack2" style="  font-family: serif;">
+                      <img class="icon2" src="./icon/back.svg" alt="">
+                    </div>
+                    <div class="elips1" id="btnHome2" style=" font-family: serif;">
+                      <img class="icon2" src="./icon/home.svg" alt="">
+                    </div>
+                    <div class="elips1" id="btnNext2" style=" font-family: serif;">
+                      <img class="icon2" src="./icon/next.svg" alt="">
+                    </div>
+                  </div>
+                  <div class="containerelips3">
+                    <div class="elips1" id="btnBack3" style="  font-family: serif;">
+                      <img class="icon2" src="./icon/back.svg" alt="">
+                    </div>
+                    <div class="elips1" id="btnHome3" style=" font-family: serif;">
+                      <img class="icon2" src="./icon/home.svg" alt="">
+                    </div>
+                    <div class="elips1" id="btnNext3" style=" font-family: serif;">
+                      <img class="icon2" src="./icon/next.svg" alt="">
+                    </div>
+                  </div>
+
+                    <!-- <a href="#" id="btnBack">Back</a>
+                    <a href="#" id="btnHome">⌂</a>
+                    <a href="#" id="btnNext">Next</a> -->
+                <!-- <div>kosong</div> -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+      window.addEventListener('load', function(){
+    if ("serviceWorker" in navigator){
+        navigator.serviceWorker.register('service-worker.js')
+        }
+    })
+
+    // audio
+    var audio = document.getElementById("audio");
+    var playButton = document.getElementById("playButton");
+
+    playButton.addEventListener("click", function() {
+      if (audio.paused) {
+        audio.play();
+        playButton.innerHTML = "<img src='./icon/mute.svg'>";
+        playButton.classList.remove("inactive");
+        playButton.classList.add("active");
+      } else {
+        audio.pause();
+        playButton.innerHTML = "<img src='./icon/playmusic.svg'> ";
+        playButton.classList.remove("active");
+        playButton.classList.add("inactive");
+      }
+    });
+    // pop up
+    var popup = document.getElementById("popup");
+    var openPopup = document.getElementById("openPopup");
+    var closePopup = document.getElementById("closePopup");
+
+    openPopup.addEventListener("click", function() {
+      popup.style.display = "block";
+    });
+
+    closePopup.addEventListener("click", function() {
+      popup.style.display = "none";
+    });
+
+    // resistor
+    // const btntugaspendahuluan = document.getElementById("btntugaspendahuluan");
+    // const btnteori = document.getElementById("btnteori");
+    // const btnpraktikum = document.getElementById("btnpraktikum");
+    // const btnpraktikumseriresistor = document.querySelector(".btnseri");
+    // const btnpraktikumpararelresistor = document.querySelector(".btnpararel");
+    // const tujuanseri = document.getElementById("tujuanseri");
+    // const tujuanpararel = document.getElementById("tujuanpararel");
+    // const alatseri = document.getElementById("alatseri");
+    // const alatpararel = document.getElementById("alatpararel");
+    // const metodeseri = document.getElementById("metodeseri");
+    // const metodepararel = document.getElementById("metodepararel");
+
+    // btnteori.addEventListener("click", function(){
+    //   document.querySelector(".modulresistor").classList.remove('hidden');
+    //   // document.querySelector(".mainofcontainermodul-a").classList.add('hidden');
+    //   document.querySelector(".mainofcontainermodul-a").classList.add('hidden');
+    // });
+
+    // btnpraktikum.addEventListener("click", function(){
+    //   // document.querySelector(".elementofcontainermoduls").style.display = "none";
+    //   document.querySelector(".buttonpraktikum").classList.remove('hidden');
+    //   document.querySelector(".modulresistor").classList.add('hidden');
+    // })
+
+    // btntugaspendahuluan.addEventListener("click", function(){
+    //   document.querySelector(".tugaspendahuluan").classList.remove('hidden');
+    //   // document.querySelector(".elementofcontainermoduls").style.display = "none";
+    //   // document.querySelector(".elementofcontainermoduls").style.display = "none";
+    //   // document.querySelector("#modulresistor").style.display = "none";
+    //   document.querySelector(".mainofcontainermodul-a").classList.add('hidden');
+    // })
+    // btnpraktikumseriresistor.addEventListener("click", function(){
+    //   document.querySelector(".contentofpraktikumseri").classList.remove('hidden');
+    //   document.querySelector(".title1").style.display = "none";
+    //   document.querySelector(".title2").style.display = "flex";
+    //   document.querySelector(".title3").style.display = "none";
+    //   // document.querySelector(".titleresistor").style.display = "none";
+    //   // document.querySelector(".contentofpraktikum").style.display = "none";
+    //   document.querySelector(".mainofcontainermodul-a").classList.add('hidden');
+    //   // document.querySelector("#modulresistor").style.display = "none";
+    //   // document.querySelector(".buttonpraktikum").style.display = "none"
+    //   // document.querySelector(".contentofpraktikumpararel").style.display = "none";
+    // });
+    // btnpraktikumpararelresistor.addEventListener("click", function(){
+    //   document.querySelector(".contentofpraktikumpararel").classList.remove('hidden');
+    //   document.querySelector(".contentofpraktikumseri").style.display = "flex";
+    //   document.querySelector(".title1").style.display = "none";
+    //   document.querySelector(".title2").style.display = "none";
+    //   document.querySelector(".title3").style.display = "flex";
+    //   // document.querySelector(".titleresistorpararel").style.display = "flex";
+    //   // document.querySelector(".titleresistor").style.display = "none";
+    //   // document.querySelector(".contentofpraktikum").style.display = "none";
+    //   document.querySelector(".mainofcontainermodul-a").classList.add('hidden');
+    //   document.querySelector(".modulresistor").classList.add('hidden');
+    //   document.querySelector(".contentofpraktikumseri").classList.add('hidden');
+    //   document.querySelector(".buttonpraktikum").classList.add('hidden');
+    // });
+    // tujuanseri.addEventListener("click", function(){
+    //   document.querySelector(".tujuanresistor").classList.remove('hidden');
+    //   document.querySelector(".mainofcontainermodul-a").classList.add('hidden');
+    //   document.querySelector(".modulresistor").classList.add('hidden');
+    //   document.querySelector(".contentofpraktikumseri").classList.add('hidden');
+    //   document.querySelector(".contentofpraktikumpararel").classList.add('hidden');
+    // })
+    // tujuanpararel.addEventListener("click", function(){
+    //   document.querySelector(".tujuanresistor").classList.remove('hidden');
+    //   document.querySelector(".mainofcontainermodul-a").classList.add('hidden');
+    //   document.querySelector(".modulresistor").classList.add('hidden');
+    //   document.querySelector(".contentofpraktikumseri").classList.add('hidden');
+    //   document.querySelector(".contentofpraktikumpararel").classList.add('hidden');
+    // })
+    // alatseri.addEventListener("click", function(){
+    //   document.querySelector(".alatbahanresistor").classList.remove('hidden');
+    //   document.querySelector(".mainofcontainermodul-a").style.display = "none";
+    //   document.querySelector(".modulresistor").style.display = "none";
+    //   document.querySelector(".contentofpraktikumseri").style.display = "none";
+    //   document.querySelector(".contentofpraktikumpararel").style.display = "none";
+    // })
+    // alatpararel.addEventListener("click", function(){
+    //   document.querySelector(".alatbahanresistor").classList.remove('hidden');
+    //   document.querySelector(".mainofcontainermodul-a").classList.add('hidden');
+    //   document.querySelector(".modulresistor").classList.add('hidden');
+    //   document.querySelector(".contentofpraktikumseri").classList.add('hidden');
+    //   document.querySelector(".contentofpraktikumpararel").classList.add('hidden');
+    // })
+    // metodeseri.addEventListener("click", function(){
+    //   document.querySelector(".metodeseriresistor").classList.remove('hidden');
+    //   document.querySelector(".mainofcontainermodul-a").classList.add('hidden');
+    //   document.querySelector(".modulresistor").classList.add('hidden');
+    //   document.querySelector(".contentofpraktikumseri").classList.add('hidden');
+    //   document.querySelector(".contentofpraktikumpararel").classList.add('hidden');
+    // })
+    // metodepararel.addEventListener("click", function(){
+    //   document.querySelector(".metodepararelresistor").classList.remove('hidden');
+    //   document.querySelector(".mainofcontainermodul-a").classList.add('hidden');
+    //   document.querySelector(".modulresistor").classList.add('hidden');
+    //   document.querySelector(".contentofpraktikumseri").classList.add('hidden');
+    //   document.querySelector(".contentofpraktikumpararel").classList.add('hidden');
+    // })
+    // kapasitor
+    // const btntugaspendahuluan1 = document.getElementById("btntugaspendahuluan1");
+    // const btnteori1 = document.getElementById("btnteori1");
+    // const btnpraktikum1 = document.getElementById("btnpraktikum1");
+    // const btnpraktikumserikapasitor = document.querySelector(".btnseri1");
+    // const btnpraktikumpararelkapasitor = document.querySelector(".btnpararel1");
+    // const tujuanseri1 = document.getElementById("tujuanseri1");
+    // const tujuanpararel1 = document.getElementById("tujuanpararel1");
+    // const alatseri1 = document.getElementById("alatseri1");
+    // const alatpararel1 = document.getElementById("alatpararel1");
+    // const metodeseri1 = document.getElementById("metodeseri1");
+    // const metodepararel1 = document.getElementById("metodepararel1");
+    // const tombolkapasitor1 = document.getElementById("")
+    // btnteori1.addEventListener("click", function(){
+    //   document.querySelector(".modulkapasitor").classList.remove('hidden');
+    //   document.querySelector(".containermodul1").classList.add('hidden');
+    // });
+    // btnpraktikum1.addEventListener("click", function(){
+    //   document.querySelector(".elementofcontainermoduls1").classList.add('hidden');
+    //   document.querySelector(".buttonpraktikum1").classList.remove('hidden');
+    //   document.querySelector(".modulkapasitor").classList.add('hidden');
+    // });
+    // btntugaspendahuluan1.addEventListener("click", function(){
+    //   document.querySelector(".tugaspendahuluan1").classList.remove('hidden');
+    //   // document.querySelector(".mainofcontainermodul1").classList.add('hidden');
+    //   document.querySelector(".modulkapasitor").classList.add('hidden');
+    //   // document.querySelector(".mainofcontainermodul1").classList.add('hidden');
+    // });
+    // btnpraktikumserikapasitor.addEventListener("click", function(){
+    //   document.querySelector(".contentofpraktikumseri1").classList.remove('hidden');
+    //   document.querySelector(".title11").classList.add('hidden');
+    //   document.querySelector(".title21").style.display = "flex";
+    //   document.querySelector(".title31").classList.add('hidden');
+    //   // document.querySelector(".titleresistor").style.display = "none";
+    //   // document.querySelector(".contentofpraktikum").style.display = "none";
+    //   // document.querySelector(".mainofcontainermodul1").classList.add('hidden');
+    //   document.querySelector(".modulkapasitor").classList.add('hidden');
+    //   document.querySelector(".buttonpraktikum1").classList.add('hidden');
+    //   document.querySelector(".contentofpraktikumpararel1").classList.add('hidden');
+    // });
+    // btnpraktikumpararelkapasitor.addEventListener("click", function(){
+    //   document.querySelector(".contentofpraktikumpararel1").classList.remove('hidden');
+    //   document.querySelector(".contentofpraktikumseri1").classList.remove('hidden');
+    //   document.querySelector(".title1").style.display = "none";
+    //   document.querySelector(".title2").style.display = "none";
+    //   document.querySelector(".title3").style.display = "flex";
+    //   // document.querySelector(".titleresistorpararel").style.display = "flex";
+    //   // document.querySelector(".titleresistor").style.display = "none";
+    //   // document.querySelector(".contentofpraktikum").style.display = "none";
+    //   // document.querySelector(".mainofcontainermodul1").classList.add('hidden');
+    //   document.querySelector(".modulkapasitor").classList.add('hidden');
+    //   document.querySelector(".contentofpraktikumseri1").classList.add('hidden');
+    //   document.querySelector(".buttonpraktikum1").classList.add('hidden');
+    // });
+    // tujuanseri1.addEventListener("click", function(){
+    //   document.querySelector(".tujuankapasitor").classList.remove('hidden');
+    //   document.querySelector(".mainofcontainermodul").classList.add('hidden');
+    //   document.querySelector(".modulkapasitor").classList.add('hidden');
+    //   document.querySelector(".contentofpraktikumseri1").classList.add('hidden');
+    //   document.querySelector(".contentofpraktikumpararel").classList.add('hidden');
+    // })
+    // tujuanpararel1.addEventListener("click", function(){
+    //   document.querySelector(".tujuankapasitor").classList.remove('hidden');
+    //   // document.querySelector(".mainofcontainermodul1").classList.add('hidden');
+    //   document.querySelector(".modulkapasitor").classList.add('hidden');
+    //   document.querySelector(".contentofpraktikumseri1").classList.add('hidden');
+    //   document.querySelector(".contentofpraktikumpararel1").classList.add('hidden');
+    // })
+    // alatseri1.addEventListener("click", function(){
+    //   document.querySelector(".alatbahankapasitor").classList.remove('hidden');
+    //   // document.querySelector(".mainofcontainermodul1").classList.add('hidden');
+    //   document.querySelector(".modulkapasitor").classList.add('hidden');
+    //   document.querySelector(".contentofpraktikumseri1").classList.add('hidden');
+    //   document.querySelector(".contentofpraktikumpararel1").classList.add('hidden');
+    // })
+    // alatpararel1.addEventListener("click", function(){
+    //   document.querySelector(".alatbahankapasitor").classList.remove('hidden');
+    //   // document.querySelector(".mainofcontainermodul1").classList.add('hidden');
+    //   document.querySelector(".modulkapasitor").classList.add('hidden');
+    //   document.querySelector(".contentofpraktikumpararel1").classList.add('hidden');
+    //   document.querySelector(".contentofpraktikumpararel1").classList.add('hidden');
+    // })
+    // metodeseri1.addEventListener("click", function(){
+    //   document.querySelector(".metodeserikapasitor").classList.remove('hidden');
+    //   // document.querySelector(".mainofcontainermodul1").classList.add('hidden');
+    //   document.querySelector(".modulkapasitor").classList.add('hidden');
+    //   document.querySelector(".contentofpraktikumseri1").classList.add('hidden');
+    //   document.querySelector(".contentofpraktikumpararel1").classList.add('hidden');
+    // })
+    // metodepararel1.addEventListener("click", function(){
+    //   document.querySelector(".metodepararelkapasitor").classList.remove('hidden');
+    //   // document.querySelector(".mainofcontainermodul1").classList.add('hidden');
+    //   document.querySelector(".modulkapasitor").classList.add('hidden');
+    //   document.querySelector(".contentofpraktikumseri1").classList.add('hidden');
+    //   document.querySelector(".contentofpraktikumpararel1").classList.add('hidden');
+    // })
+
+
+      const rootSlider1 = document.getElementById("resistor1-slider_rs")
+      const rootSlider2 = document.getElementById("resistor2-slider_rs")
+      const rootSlider3 = document.getElementById("voltage-slider_rs")
+      const rootSlider4 = document.getElementById("resistor1-slider_rp")
+      const rootSlider5 = document.getElementById("resistor2-slider_rp")
+      const rootSlider6 = document.getElementById("voltage-slider_rp")
+      const rootSlider7 = document.getElementById("resistor1-slider_ks")
+      const rootSlider8 = document.getElementById("resistor2-slider_ks")
+      const rootSlider9 = document.getElementById("voltage-slider_ks")
+      const rootSlider10 = document.getElementById("resistor1-slider_kp")
+      const rootSlider11 = document.getElementById("resistor2-slider_kp")
+      const rootSlider12 = document.getElementById("voltage-slider_kp")
+
+      function resetSliderValue() {
+        rootSlider1.value = 0
+        rootSlider2.value = 0
+        rootSlider3.value = 0
+        rootSlider4.value = 0
+        rootSlider5.value = 0
+        rootSlider6.value = 0
+        rootSlider7.value = 0
+        rootSlider8.value = 0
+        rootSlider9.value = 0
+        rootSlider10.value = 0
+        rootSlider11.value = 0
+        rootSlider12.value = 0
+      }
+
+        // loading
+        setTimeout(function() {
+             document.getElementById("loading").style.display = "none";
+             document.getElementById("ui").style.display = "block"; 
+        }, 3000);
+
+        // sidenav
+
+    function openNav() {
+		  document.querySelector(".sidenav").style.width = "70%";
+		}
+    function daftarpustaka() {
+      document.querySelector(".daftarpustaka").style.width = "100%";
+		}
+    function tentangpengembang() {
+      document.querySelector(".tentangpengembang").style.width = "100%";
+		}
+    function petunjukmedia() {
+      document.querySelector(".petunjukmedia").style.width = "100%";
+		}
+
+    function closeNav1() {
+		  document.querySelector(".sidenav").style.width = "0";
+		}
+		function closeNav() {
+      document.querySelector(".daftarpustaka").style.width = "0";
+      document.querySelector(".tentangpengembang").style.width = "0";
+      document.querySelector(".petunjukmedia").style.width = "0";
+		}
+
+        // const sidebar = document.getElementById("sidebar");
+        // const kotakside = document.getElementById("kotakside")
+
+        // sidebar.addEventListener("click", function(){
+        //     kotakside.classList.toggle("muncul");
+        // })
+
+        const kotaktombol1 = document.getElementById("kotaktombol1");
+        const kotaktombol2 = document.getElementById("kotaktombol2");
+        const kotaktombol3 = document.getElementById("kotaktombol3");
+        const kotaktombol4 = document.getElementById("kotaktombol4");
+        const tombol = document.getElementById("tombol");
+        const content1 = document.getElementById("content1");
+        const content2 = document.getElementById("content2");
+        const content3 = document.getElementById("content3");
+        const content4 = document.getElementById("content4");
+        const btnBack = document.getElementById("btnBack");
+        const btnHome = document.getElementById("btnHome");
+        const btnNext = document.getElementById("btnNext");
+
+        kotaktombol1.addEventListener("click", function(){
+           showPage(1);
+           pages[0].style.display="none";
+            document.querySelector(".elips").style.display ="none";
+            document.querySelector(".containerelips1").style.display ="none";
+            document.querySelector(".containerelips2").style.display ="flex";
+            document.querySelector(".containerelips3").style.display ="none";
+        //    pages[2].style.display="none";
+        //    pages[3].style.display="none";
+        //    pages[4].style.display="none";
+        });
+
+        kotaktombol2.addEventListener("click", function(){
+           showPage(2);
+           pages[0].style.display="none";
+            document.querySelector(".elips").style.display ="none";
+            document.querySelector(".containerelips1").style.display ="none";
+            document.querySelector(".containerelips2").style.display ="none";
+            document.querySelector(".containerelips3").style.display ="flex";
+        //    pages[1].style.display="none";
+        //    pages[3].style.display="none";
+        //    pages[4].style.display="none";
+        });
+
+        kotaktombol3.addEventListener("click", function(){
+           showPage(3);
+            pages[0].style.display="none";
+            document.querySelector(".elips").style.display ="none";
+            document.querySelector(".containerelips1").style.display ="flex";
+            document.querySelector(".containerelips2").style.display ="none";
+            document.querySelector(".containerelips3").style.display ="none";
+            
+        //    pages[0].classList.toggle("hidden")
+        //    pages[1].classList.toggle("hidden")
+        //    pages[2].classList.toggle("hidden")
+        //    pages[4].classList.toggle("hidden")
+        });
+
+        kotaktombol4.addEventListener("click", function(){
+           showPage(4);
+           pages[0].style.display="none";
+        //    pages[1].style.display="none";
+        //    pages[2].style.display="none";
+        //    pages[3].style.display="none";
+        });
+
+        let currentPageIndex = 0;
+        const pages = [tombol, content1, content2, content3, content4]
+       function showPage(index){
+        pages[currentPageIndex].classList.add('hidden');
+        pages[index].classList.remove('hidden');
+        currentPageIndex = index;
+       } 
+
+     function goBack() {
+      resetSliderValue()
+      tombolquizAwal()
+        if (currentPageIndex > 1) {
+          showPage(currentPageIndex - 1);
+          pages[0].style.display="none";
+        }else{
+            if(currentPageIndex =1){
+                showPage(0);
+                pages[0].style.display="flex"; 
+            }
+        }
+      }
+
+      function goNext() {
+        resetSliderValue()
+        tombolquizAwal()
+        if (currentPageIndex < pages.length - 1) {
+          showPage(currentPageIndex + 1);
+          pages[0].style.display="none";
+        }
+      }
+
+      function goHome() {
+        resetSliderValue()
+        tombolquizAwal()
+        showPage(0);
+        pages[0].style.display="flex";
+        document.querySelector(".elips").style.display ="flex";
+        document.querySelector(".containerelips1").style.display ="none";
+        document.querySelector(".containerelips2").style.display ="none";
+        document.querySelector(".containerelips3").style.display ="none";
+      }
+
+      btnHome.addEventListener('click', goHome);
+      // btnBack.addEventListener('click', goBack);
+      // btnNext.addEventListener('click', goNext);
+
+      // Navigation Resistor
+      const pageResistor = document.getElementsByClassName("pageResistor");
+      const shortcutButtons2 = document.getElementsByClassName("shortcutButton2");
+      const btnBack2 = document.getElementById("btnBack2");
+      const btnHome2 = document.getElementById("btnHome2");
+      const btnNext2 = document.getElementById("btnNext2");
+      const navigationResistor = document.getElementById("navigationResistor");
+
+      let pageIndexResistor = 0;
+      // const pageResistor = [res1, res2, modulresistor, res3, res4, res5, res6, res7, res8, res9]
+
+      function showPageResistor(index){
+      for (var i = 0; i < pageResistor.length; i++) {
+        pageResistor[i].classList.add("hidden");
+      }
+      pageResistor[index].classList.remove("hidden");
+      }
+
+    for (var i = 0; i < shortcutButtons2.length; i++) {
+      shortcutButtons2[i].addEventListener("click", function() {
+        var selectedPage = Array.from(shortcutButtons2).indexOf(this) + 1;
+        if (selectedPage >= 0 && selectedPage < pageResistor.length) {
+          pageIndexResistor = selectedPage;
+          showPageResistor(pageIndexResistor);
+        }
+      });
+    }
+ 
+    btnBack2.addEventListener("click", function() {
+      if (pageIndexResistor > 0) {
+        showPageResistor(pageIndexResistor - 1);
+        pageIndexResistor--;
+        if (pageIndexResistor === 0) {
+           navigationResistor.classList.remove("hidden");
+        }
+      }
+    });
+
+    btnNext2.addEventListener("click", function() {
+      if (pageIndexResistor < pageResistor.length - 1) {
+        showPageResistor(pageIndexResistor + 1);
+        pageIndexResistor++;
+        if (pageIndexResistor !== 0) {
+          navigationResistor.classList.add("hidden");
+        }
+      }
+    });
+    showPageResistor(pageIndexResistor);
+
+      function goHome2() {
+        resetSliderValue()
+        goHome()
+      }
+
+      btnHome2.addEventListener('click', goHome2);
+      // btnBack2.addEventListener('click', goBack2);
+      // btnNext2.addEventListener('click', goNext2);
+      
+      // Navigation kapasitor
+      const pageKapasitor = document.getElementsByClassName("pageKapasitor");
+      const shortcutButtons3 = document.getElementsByClassName("shortcutButton3");
+      const btnBack3 = document.getElementById("btnBack3");
+      const btnHome3 = document.getElementById("btnHome3");
+      const btnNext3 = document.getElementById("btnNext3");
+      const navigationKapasitor = document.getElementById("navigationKapasitor");
+
+      let pageIndexKapasitor = 0;
+      // const pageResistor = [res1, res2, modulresistor, res3, res4, res5, res6, res7, res8, res9]
+
+      function showPageKapasitor(index){
+      for (var i = 0; i < pageKapasitor.length; i++) {
+        pageKapasitor[i].classList.add("hidden");
+      }
+      pageKapasitor[index].classList.remove("hidden");
+      }
+
+    for (var i = 0; i < shortcutButtons3.length; i++) {
+      shortcutButtons3[i].addEventListener("click", function() {
+        var selectedPage = Array.from(shortcutButtons3).indexOf(this) + 1;
+        if (selectedPage >= 0 && selectedPage < pageKapasitor.length) {
+          pageIndexKapasitor = selectedPage;
+          showPageKapasitor(pageIndexKapasitor);
+        }
+      });
+    }
+ 
+    btnBack3.addEventListener("click", function() {
+      if (pageIndexKapasitor > 0) {
+        showPageKapasitor(pageIndexKapasitor - 1);
+        pageIndexKapasitor--;
+        if (pageIndexKapasitor === 0) {
+           navigationKapasitor.classList.remove("hidden");
+        }
+      }
+    });
+    btnNext3.addEventListener("click", function() {
+      if (pageIndexKapasitor < pageKapasitor.length - 1) {
+        showPageKapasitor(pageIndexKapasitor + 1);
+        pageIndexKapasitor++;
+        if (pageIndexKapasitor !== 0) {
+          navigationKapasitor.classList.add("hidden");
+        }
+      }
+    });
+    showPageKapasitor(pageIndexKapasitor);
+
+      function goHome3() {
+        resetSliderValue()
+        goHome()
+      }
+
+      btnHome3.addEventListener('click', goHome3);      
+      // navigation simulasi
+      const pageSimulasi = document.getElementsByClassName("pageSimulasi");
+      const shortcutButtons1 = document.getElementsByClassName("shortcutButton1");
+      const btnBack1 = document.getElementById("btnBack1");
+      const btnHome1 = document.getElementById("btnHome1");
+      const btnNext1 = document.getElementById("btnNext1");
+      const tombolsimulasi = document.getElementById("tombolsimulasi");
+
+      let currentPageSimulasi = 0;
+
+      function showSimulasi(index){
+        for (var i = 0; i<pageSimulasi.length; i++){
+          pageSimulasi[i].classList.add("hidden");
+        }
+        pageSimulasi[index].classList.remove("hidden");
+      }
+
+      for (let i = 0; i < shortcutButtons1.length; i++) {
+      shortcutButtons1[i].addEventListener("click", function() {
+        let selectedPage = Array.from(shortcutButtons1).indexOf(this)+1;
+        if (selectedPage >= 0 && selectedPage < pageSimulasi.length) {
+          currentPageSimulasi = selectedPage;
+          showSimulasi(currentPageSimulasi);
+        }
+      });
+    }
+    btnBack1.addEventListener("click", function() {
+      if (currentPageSimulasi > 0) {
+        showSimulasi(currentPageSimulasi-1);
+        currentPageSimulasi--;
+        if (currentPageSimulasi === 0) {
+          tombolsimulasi.classList.remove("hidden");
+        }
+      }
+    });
+
+    btnNext1.addEventListener("click", function() {
+      if (currentPageSimulasi < pageSimulasi.length - 1) {
+        showSimulasi(currentPageSimulasi + 1);
+        currentPageSimulasi++;
+        if (currentPageSimulasi !== 0) {
+          tombolsimulasi.classList.add("hidden");
+        }
+      }
+    });
+    showSimulasi(currentPageSimulasi);
+
+      // let pageIndexSimulasi = 0;
+      // const pageSimulasi = [ tombolsimulasi, contentofsimulasiseriresistor, contentofsimulasiserikapasitor, contentofsimulasipararelresistor, contentofsimulasipararelkapasitor]
+
+      // function showPageSimulasi(index){
+      //   pageSimulasi[pageIndexSimulasi].classList.add('hidden1');
+      //   pageSimulasi[index].classList.remove('hidden1');
+      //   pageIndexSimulasi = index;
+      //  } 
+      
+      // function goBack1() {
+      // resetSliderValue()
+      // // tombolquizAwal()
+      //   if (pageIndexSimulasi > 1) {
+      //     showPageSimulasi( pageIndexSimulasi - 1);
+      //     pageSimulasi[0].style.display="none";
+      //   }else{
+      //       if(pageIndexSimulasi =1){
+      //           showPageSimulasi(0);
+      //           pageSimulasi[0].style.display="flex"; 
+      //       }
+      //   }
+      // }
+
+      // function goNext1() {
+      //   resetSliderValue()
+      //   // tombolquizAwal()
+      //   if (pageIndexSimulasi < pageSimulasi.length - 1) {
+      //     showPageSimulasi(pageIndexSimulasi + 1);
+      //     pageSimulasi[0].style.display="none";
+      //   }
+      // }
+
+      function goHome1() {
+        resetSliderValue()
+        goHome()
+      }
+
+      btnHome1.addEventListener('click', goHome1);
+      // btnBack1.addEventListener('click', goBack1);
+      // btnNext1.addEventListener('click', goNext1);
+
+
+     // simulasi
+    //     function openTab(praktikumName) {
+    //     var i, tabcontent, tablinks;
+
+    //   // Hide all tab content
+    //   tabcontent = document.getElementsByClassName("tabcontent");
+    //   for (i = 0; i < tabcontent.length; i++) {
+    //     tabcontent[i].style.display = "none";
+    //   }
+
+    //   // Show the selected tab content
+    //   document.querySelector(".tombolsimulasi").style.display = "none";
+    //   document.querySelector("#seriresistor").style.display = "flex";
+    //   document.querySelector(".contentofsimulasiseriresistor").style.display = "flex";
+    //   // document.getElementsByClassName(praktikumName).style.display = "flex";
+    //   // event.style.backgroundColor = "#caca"
+    // }
+
+    // Click the default open button
+    // document.getElementById("defaultOpen").click();
+
+    // const btnsimulasiseriresistor = document.querySelector(".tablink1");
+    // const btnsimulasipararelresistor = document.querySelector(".tablink2");
+    // const btnsimulasiserikapasitor = document.querySelector(".tablink3");
+    // const btnsimulasipararelkapasitor = document.querySelector(".tablink4");
+    // btnsimulasiseriresistor.addEventListener("click", function(){
+    //   document.querySelector(".contentofsimulasiseriresistor").classList.remove('hidden1');
+    //   document.querySelector(".tombolsimulasi").style.display ="none";
+    //   // document.querySelector("#seriresistor").style.display ="flex";
+    //   document.querySelector(".judulsimulasi1").style.display ="flex";
+    // })
+    // btnsimulasipararelresistor.addEventListener("click", function(){
+    //   document.querySelector(".contentofsimulasipararelresistor").classList.remove('hidden1');
+    //   document.querySelector(".tombolsimulasi").style.display ="none";
+    //   // document.querySelector("#pararelresistor").style.display ="flex";
+    //   document.querySelector(".judulsimulasi2").style.display ="flex";
+    // })
+    // btnsimulasiserikapasitor.addEventListener("click", function(){
+    //   document.querySelector(".contentofsimulasiserikapasitor").classList.remove('hidden1');
+    //   document.querySelector(".tombolsimulasi").style.display ="none";
+    //   // document.querySelector("#pararelresistor").style.display ="flex";
+    //   document.querySelector(".judulsimulasi3").style.display ="flex";
+    //   // document.querySelector(".cobasimulasi").style.display ="flex";
+    //   console.log("halllo");
+    // })
+    // btnsimulasipararelkapasitor.addEventListener("click", function(){
+    //   document.querySelector(".contentofsimulasipararelkapasitor").classList.remove('hidden1');
+    //   document.querySelector(".tombolsimulasi").style.display ="none";
+    //   // document.querySelector("#pararelkapasitor").style.display ="flex";
+    //   document.querySelector(".judulsimulasi4").style.display ="flex";
+    // })
+    // slider
+        var sliders = document.querySelectorAll(".slider");
+        var labels = document.querySelectorAll(".slider-label");
+
+        for (var i = 0; i < sliders.length; i++) {
+            sliders[i].addEventListener("input", updateLabel);
+        }
+
+        function updateLabel() {
+            var slider = this;
+            var label = slider.nextElementSibling;
+            label.innerHTML = slider.value;
+        }
+ 
+
+       // canvas
+    let a = 0.95
+    // seri resistor
+    const canvas_rs = document.getElementById('circuit_rs');
+    const ctx_rs = canvas_rs.getContext('2d');
+
+    // Set the default resistance values
+    let resistance1_rs =1 ;
+    let resistance2_rs =1 ;
+    let voltage_rs = 0;
+    let voltage1_rs = 0;
+    let voltage2_rs = 0;
+    let current1_rs = 0;
+    let current2_rs = 0;
+    let currentEk_rs = 0;
+
+    // Function to draw the circuit
+    function drawCircuit() {
+      // Clear the canvas
+      ctx_rs.clearRect(0, 0, canvas_rs.width, canvas_rs.height);
+
+      // let resistance1 = document.getElementById("resistor1-slider").value;
+      // let resistance2 = document.getElementById("resistor2-slider").value;
+      // let voltage = document.getElementById("voltage-slider").value;
+      
+      // let totalResistance = resistance1 + resistance2;
+      // let current = voltage/totalResistance;
+      // let voltage1 = resistance1 * current;
+      // let voltage2 = resistance2 * current;
+
+    //  
+    
+                // part of drawing lines
+            ctx_rs.beginPath();
+            ctx_rs.moveTo(100*a, 100*a);
+            ctx_rs.lineTo(400*a, 100*a);
+            ctx_rs.lineTo(400*a, 400*a);
+            ctx_rs.lineTo(100*a, 400*a);
+            ctx_rs.closePath();
+            ctx_rs.stroke();
+
+            // drawing battery
+
+            ctx_rs.beginPath();
+            ctx_rs.moveTo(80*a, 250*a);
+            ctx_rs.lineTo(120*a,250*a);
+            ctx_rs.moveTo(90*a, 260*a);
+            ctx_rs.lineTo(110*a,260*a);
+            ctx_rs.stroke();
+            ctx_rs.font = '16px sans-serif';
+            ctx_rs.fillText(`${voltage_rs} V`, 20*a, 260*a);
+
+            // drawing resitance 1
+
+            ctx_rs.rect(200*a, 85*a, 70*a, 30*a);
+            ctx_rs.fill();
+            ctx_rs.font = '16px sans-serif';
+            ctx_rs.fillText(`R1 = ${resistance1_rs} Ω`, 200*a, 75*a);
+            ctx_rs.fillText(`V1 = ${voltage1_rs.toFixed(2)} V`, 200*a, 135*a);
+
+            // drawing resitance 2
+            ctx_rs.rect(200*a, 385*a, 70*a, 30*a);
+            ctx_rs.fill();
+            ctx_rs.font = '16px sans-serif';
+            ctx_rs.fillText(`R1 = ${resistance2_rs} Ω`, 200*a, 375*a);
+            ctx_rs.fillText(`V2 = ${voltage2_rs.toFixed(2)} V`, 200*a, 435*a);
+
+            // drawing arus 1
+            ctx_rs.rect(310*a, 98*a, 30*a, 5*a);
+            ctx_rs.fill();
+            ctx_rs.beginPath()
+            ctx_rs.moveTo(340*a, 95*a);
+            ctx_rs.lineTo(350*a,100*a);
+            ctx_rs.lineTo(340*a,105*a);
+            ctx_rs.fill();
+            ctx_rs.font = '16px sans-serif';
+            ctx_rs.fillText(`I1 = ${current1_rs.toFixed(2)} A`, 310*a, 75*a);
+
+             // drawing arus 2
+            ctx_rs.rect(310*a, 398*a, 30*a, 5*a);
+            ctx_rs.fill();
+            ctx_rs.beginPath()
+            ctx_rs.moveTo(310*a, 395*a);
+            ctx_rs.lineTo(300*a,400*a);
+            ctx_rs.lineTo(310*a,405*a);
+            ctx_rs.fill();
+            ctx_rs.font = '16px sans-serif';
+            ctx_rs.fillText(`I2 = ${current2_rs.toFixed(2)} A`, 310*a, 385*a);
+
+              // drawing arus total
+            ctx_rs.rect(97*a, 180*a, 5*a, 30*a);
+            ctx_rs.fill();
+            ctx_rs.beginPath()
+            ctx_rs.moveTo(97*a, 180*a);
+            ctx_rs.lineTo(87*a, 180*a);
+            ctx_rs.lineTo(107*a, 180*a);
+            ctx_rs.fill();
+            ctx_rs.font = '16px sans-serif';
+            ctx_rs.fillText(`I = ${currentEk_rs.toFixed(2)} A`, 20*a, 200*a);            
+            
+    }
+
+    // Draw the initial circuit
+    drawCircuit();
+    // seri resistor
+    // Update the resistance values when the sliders are moved
+
+        function updateCircuit() {
+        resistance1_rs = parseInt(slider1_rs.value);
+        resistance2_rs = parseInt(slider2_rs.value);
+        voltage_rs = parseInt(slider3_rs.value);
+
+        resistanceEk_rs = resistance1_rs + resistance2_rs;
+        voltage1_rs = (resistance1_rs / (resistance1_rs + resistance2_rs)) * voltage_rs;
+        voltage2_rs = (resistance2_rs / (resistance1_rs + resistance2_rs)) * voltage_rs;
+
+        current1_rs = voltage1_rs / resistance1_rs;
+        current2_rs = voltage2_rs / resistance2_rs;
+        currentEk_rs = voltage_rs / resistanceEk_rs;
+
+        drawCircuit();
+    }
+
+    const slider1_rs = document.getElementById('resistor1-slider_rs');
+    const slider2_rs = document.getElementById('resistor2-slider_rs');
+    const slider3_rs = document.getElementById('voltage-slider_rs');
+    slider1_rs.addEventListener('input', updateCircuit);
+    slider2_rs.addEventListener('input', updateCircuit);
+    slider3_rs.addEventListener('input', updateCircuit);
+
+    drawCircuit();
+
+    // pararel resistor
+    const canvas_rp = document.getElementById('circuit_sp');
+    const ctx_rp = canvas_rp.getContext('2d');
+
+    // Set the default resistance values
+    let resistance1_rp = 9;
+    let resistance2_rp = 9;
+    let voltage_rp = 0;
+    let voltage1_rp = voltage_rp;
+    let voltage2_rp = voltage_rp;
+    let current1_rp = 0;
+    let current2_rp = 0;
+    let currentEk_rp = 0;
+    // Function to draw the circuit
+    function drawCircuit_rp() {
+      // Clear the canvas
+      ctx_rp.clearRect(0, 0, canvas_rp.width, canvas_rp.height);
+
+    //  
+    
+                // part of drawing lines
+            ctx_rp.beginPath();
+            ctx_rp.moveTo(100*a, 100*a);
+            ctx_rp.lineTo(400*a, 100*a);
+            ctx_rp.lineTo(400*a, 400*a);
+            ctx_rp.lineTo(100*a, 400*a);
+            ctx_rp.closePath();
+            ctx_rp.stroke();
+            ctx_rp.beginPath();
+            ctx_rp.moveTo(100*a,265*a);
+            ctx_rp.lineTo(400*a,265*a);
+            ctx_rp.stroke();
+
+            // drawing battery
+
+            ctx_rp.beginPath();
+            ctx_rp.moveTo(230*a, 380*a);
+            ctx_rp.lineTo(230*a,420*a);
+            ctx_rp.moveTo(250*a, 390*a);
+            ctx_rp.lineTo(250*a,410*a);
+            ctx_rp.stroke();
+            ctx_rp.font = '16px sans-serif';
+            ctx_rp.fillText(`${voltage_rp} V`, 220*a, 460*a);
+
+            // drawing resitance 1
+
+            ctx_rp.rect(200*a, 85*a, 70*a, 30*a);
+            ctx_rp.fill();
+            ctx_rp.font = '16px sans-serif';
+            ctx_rp.fillText(`R1 = ${resistance1_rp} Ω`, 200*a, 75*a);
+            ctx_rp.fillText(`V1 = ${voltage1_rp.toFixed(2)} V`, 200*a, 135*a);
+
+            // drawing resitance 2
+            ctx_rp.rect(200*a, 250*a, 70*a, 30*a);
+            ctx_rp.fill();
+            ctx_rp.font = '16px sans-serif';
+            ctx_rp.fillText(`R1 = ${resistance2_rp} Ω`, 200*a, 235*a);
+            ctx_rp.fillText(`V2 = ${voltage2_rp.toFixed(2)} V`, 200*a, 305*a);
+
+            // drawing arus 1
+            ctx_rp.rect(310*a, 98*a, 30*a, 5*a);
+            ctx_rp.fill();
+            ctx_rp.beginPath()
+            ctx_rp.moveTo(340*a, 95*a);
+            ctx_rp.lineTo(350*a,100*a);
+            ctx_rp.lineTo(340*a,105*a);
+            ctx_rp.fill();
+            ctx_rp.font = '16px sans-serif';
+            ctx_rp.fillText(`I1 = ${current1_rp.toFixed(2)} A`, 310*a, 75*a);
+
+             // drawing arus 2
+            ctx_rp.rect(310*a, 263*a, 30*a, 5*a);
+            ctx_rp.fill();
+            ctx_rp.beginPath()
+            ctx_rp.moveTo(340*a, 260*a);
+            ctx_rp.lineTo(350*a,265*a);
+            ctx_rp.lineTo(340*a,270*a);
+            ctx_rp.fill();
+            ctx_rp.font = '16px sans-serif';
+            ctx_rp.fillText(`I2 = ${current2_rp.toFixed(2)} A`, 310*a, 245*a);
+
+              // drawing arus total
+            ctx_rp.rect(97*a, 320*a, 5*a, 30*a);
+            ctx_rp.fill();
+            ctx_rp.beginPath()
+            ctx_rp.moveTo(97*a, 180*a);
+            ctx_rp.lineTo(87*a, 180*a);
+            ctx_rp.lineTo(107*a, 180*a);
+            ctx_rp.fill();
+            ctx_rp.font = '16px sans-serif';
+            ctx_rp.fillText(`I = ${currentEk_rp.toFixed(2)} A`, 20*a, 340*a);            
+            
+    }
+
+    // Draw the initial circuit
+    drawCircuit_rp();
+
+    // Update the resistance values when the sliders are moved
+    const slider1_rp = document.getElementById('resistor1-slider_rp');
+    const slider2_rp = document.getElementById('resistor2-slider_rp');
+    const slider3_rp = document.getElementById('voltage-slider_rp');
+    slider1_rp.addEventListener('input', function() {
+      resistanceEk_rp = ((resistance1_rp*resistance2_rp)/(resistance1_rp + resistance2_rp));
+      resistance1_rp = parseInt(slider1_rp.value);
+      resistance2_rp = parseInt(slider2_rp.value);
+      voltage_rp = parseInt(slider3_rp.value);
+      voltage1_rp = voltage2_rp = voltage_rp;
+
+
+      current1_rp = (voltage_rp/resistanceEk_rp) - (voltage2_rp/resistance2_rp);
+      current2_rp = (voltage_rp/resistanceEk_rp) - (voltage1_rp/resistance1_rp);
+      currentEk_rp = voltage_rp/resistanceEk_rp;
+      currentEk_rp = current1_rp + current2_rp;
+      drawCircuit_rp();
+    });
+    slider2_rp.addEventListener('input', function() {
+      resistanceEk_rp = ((resistance1_rp*resistance2_rp)/(resistance1_rp + resistance2_rp));
+      resistance1_rp = parseInt(slider1_rp.value);
+      resistance2_rp = parseInt(slider2_rp.value);
+      voltage_rp = parseInt(slider3_rp.value);
+      voltage1_rp = voltage2_rp = voltage_rp;
+
+
+      current1_rp = (voltage_rp/resistanceEk_rp) - (voltage2_rp/resistance2_rp);
+      current2_rp = (voltage_rp/resistanceEk_rp) - (voltage1_rp/resistance1_rp);
+      currentEk_rp = voltage_rp/resistanceEk_rp;
+      currentEk_rp = current1_rp + current2_rp;
+      drawCircuit_rp();
+    });
+     slider3_rp.addEventListener('input', function() {
+      resistanceEk_rp = ((resistance1_rp*resistance2_rp)/(resistance1_rp + resistance2_rp));
+      resistance1_rp = parseInt(slider1_rp.value);
+      resistance2_rp = parseInt(slider2_rp.value);
+      voltage_rp = parseInt(slider3_rp.value);
+      voltage1_rp = voltage2_rp = voltage_rp;
+
+
+      current1_rp = (voltage_rp/resistanceEk_rp) - (voltage2_rp/resistance2_rp);
+      current2_rp = (voltage_rp/resistanceEk_rp) - (voltage1_rp/resistance1_rp);
+      currentEk_rp = voltage_rp/resistanceEk_rp;
+      currentEk_rp = current1_rp + current2_rp;
+      drawCircuit_rp();
+    });
+    // seri kapasitor
+        const canvas_ks = document.getElementById('circuit_ks');
+    const ctx_ks = canvas_ks.getContext('2d');
+
+    // Set the default resistance values
+    let resistance1_ks = 9;
+    let resistance2_ks = 9;
+    let voltage_ks = 0;
+    let voltage1_ks = 0;
+    let voltage2_ks = 0;
+    let current1_ks = voltage1_ks/resistance1_ks;
+    let current2_ks = voltage2_ks/resistance2_ks;
+    let currentEk_ks = 0;
+
+   
+    // Function to draw the circuit
+    function drawCircuit_ks() {
+      // Clear the canvas
+      ctx_ks.clearRect(0, 0, canvas_ks.width, canvas_ks.height);
+
+    //  
+    
+                // part of drawing lines
+            ctx_ks.beginPath();
+            ctx_ks.moveTo(100*a, 100*a);
+            ctx_ks.lineTo(400*a, 100*a);
+            ctx_ks.lineTo(400*a, 400*a);
+            ctx_ks.lineTo(100*a, 400*a);
+            ctx_ks.closePath();
+            ctx_ks.stroke();
+
+            // drawing battery
+
+            ctx_ks.beginPath();
+            ctx_ks.moveTo(80*a, 250*a);
+            ctx_ks.lineTo(120*a,250*a);
+            ctx_ks.moveTo(90*a, 260*a);
+            ctx_ks.lineTo(110*a,260*a);
+            ctx_ks.stroke();
+            ctx_ks.font = '16px sans-serif';
+            ctx_ks.fillText(`${voltage_ks} V`, 20*a, 260*a);
+
+            // drawing capasitor 1
+
+            ctx_ks.beginPath();
+            ctx_ks.moveTo(200*a, 80*a);
+            ctx_ks.lineTo(200*a,120*a);
+            ctx_ks.lineTo(210*a,120*a);
+            ctx_ks.lineTo(210*a, 80*a)
+            ctx_ks.fill();
+            
+            ctx_ks.beginPath();
+            ctx_ks.moveTo(240*a, 80*a);
+            ctx_ks.lineTo(240*a,120*a);
+            ctx_ks.lineTo(250*a,120*a);
+            ctx_ks.lineTo(250*a, 80*a)
+            ctx_ks.fill();
+            ctx_ks.font = '16px sans-serif';
+            ctx_ks.fillText(`R1 = ${resistance1_ks} Ω`, 200*a, 75*a);
+            ctx_ks.fillText(`V1 = ${voltage1_ks.toFixed(2)} V`, 200*a, 135*a);
+
+            // drawing capasitor 2
+            ctx_ks.beginPath();
+            ctx_ks.moveTo(200*a, 380*a);
+            ctx_ks.lineTo(200*a,420*a);
+            ctx_ks.lineTo(210*a,420*a);
+            ctx_ks.lineTo(210*a,380*a)
+            ctx_ks.fill();
+            
+            ctx_ks.beginPath();
+            ctx_ks.moveTo(240*a, 380*a);
+            ctx_ks.lineTo(240*a,420*a);
+            ctx_ks.lineTo(250*a,420*a);
+            ctx_ks.lineTo(250*a,380*a)
+            ctx_ks.fill();
+            ctx_ks.font = '16px sans-serif';
+            ctx_ks.fillText(`R1 = ${resistance2_ks} Ω`, 200*a, 375*a);
+            ctx_ks.fillText(`V2 = ${voltage2_ks.toFixed(2)} V`, 200*a, 435*a);
+
+            // drawing arus 1
+            ctx_ks.rect(310*a, 98*a, 30*a, 5*a);
+            ctx_ks.fill();
+            ctx_ks.beginPath()
+            ctx_ks.moveTo(340*a, 95*a);
+            ctx_ks.lineTo(350*a,100*a);
+            ctx_ks.lineTo(340*a,105*a);
+            ctx_ks.fill();
+            ctx_ks.font = '16px sans-serif';
+            ctx_ks.fillText(`I1 = ${current1_ks.toFixed(2)} A`, 310*a, 75*a);
+
+             // drawing arus 2
+            ctx_ks.rect(310*a, 398*a, 30*a, 5*a);
+            ctx_ks.fill();
+            ctx_ks.beginPath()
+            ctx_ks.moveTo(310*a, 395*a);
+            ctx_ks.lineTo(300*a,400*a);
+            ctx_ks.lineTo(310*a,405*a);
+            ctx_ks.fill();
+            ctx_ks.font = '16px sans-serif';
+            ctx_ks.fillText(`I2 = ${current2_ks.toFixed(2)} A`, 310*a, 385*a);
+
+              // drawing arus total
+            ctx_ks.rect(97*a, 180*a, 5*a, 30*a);
+            ctx_ks.fill();
+            ctx_ks.beginPath()
+            ctx_ks.moveTo(97*a, 180*a);
+            ctx_ks.lineTo(87*a, 180*a);
+            ctx_ks.lineTo(107*a, 180*a);
+            ctx_ks.fill();
+            ctx_ks.font = '16px sans-serif';
+            ctx_ks.fillText(`I = ${currentEk_ks.toFixed(2)} A`, 20*a, 200*a);            
+            
+    }
+
+    // Draw the initial circuit
+    drawCircuit_ks();
+
+    // Update the resistance values when the sliders are moved
+    const slider1_ks = document.getElementById('resistor1-slider_ks');
+    const slider2_ks = document.getElementById('resistor2-slider_ks');
+    const slider3_ks = document.getElementById('voltage-slider_ks');
+    slider1_ks.addEventListener('input', function() {
+      resistanceEk_ks = ((resistance1_ks*resistance2_ks)/(resistance1_ks + resistance2_ks));
+      resistance1_ks = parseInt(slider1_ks.value);
+      resistance2_ks = parseInt(slider2_ks.value);
+      voltage_ks = parseInt(slider3_ks.value);
+      voltage1_ks = voltage2_ks = voltage_ks;
+
+
+      current1_ks = (voltage_ks/resistanceEk_ks) - (voltage2_ks/resistance2_ks);
+      current2_ks = (voltage_ks/resistanceEk_ks) - (voltage1_ks/resistance1_ks);
+      currentEk_ks = voltage_ks/resistanceEk_ks;
+      currentEk_ks= current1_ks + current2_ks;
+      drawCircuit_ks();
+    });
+    slider2_ks.addEventListener('input', function() {
+      resistanceEk_ks = ((resistance1_ks*resistance2_ks)/(resistance1_ks + resistance2_ks));
+      resistance1_ks = parseInt(slider1_ks.value);
+      resistance2_ks = parseInt(slider2_ks.value);
+      voltage_ks = parseInt(slider3_ks.value);
+      voltage1_ks = voltage2_ks = voltage_ks;
+
+
+      current1_ks = (voltage_ks/resistanceEk_ks) - (voltage2_ks/resistance2_ks);
+      current2_ks = (voltage_ks/resistanceEk_ks) - (voltage1_ks/resistance1_ks);
+      currentEk_ks = voltage_ks/resistanceEk_ks;
+      currentEk_ks= current1_ks + current2_ks;
+      drawCircuit_ks();
+    });
+     slider3_ks.addEventListener('input', function() {
+      resistanceEk_ks = ((resistance1_ks*resistance2_ks)/(resistance1_ks + resistance2_ks));
+      resistance1_ks = parseInt(slider1_ks.value);
+      resistance2_ks = parseInt(slider2_ks.value);
+      voltage_ks = parseInt(slider3_ks.value);
+      voltage1_ks = voltage2_ks = voltage_ks;
+
+
+      current1_ks = (voltage_ks/resistanceEk_ks) - (voltage2_ks/resistance2_ks);
+      current2_ks = (voltage_ks/resistanceEk_ks) - (voltage1_ks/resistance1_ks);
+      currentEk_ks = voltage_ks/resistanceEk_ks;
+      currentEk_ks= current1_ks + current2_ks;
+      drawCircuit_ks();
+    });
+
+    ////////////
+    // pararel kapasitor
+       // Get the canvas element
+    const canvas_kp = document.getElementById('circuit_kp');
+    const ctx_kp = canvas_kp.getContext('2d');
+
+    // Set the default resistance values
+    let resistance1_kp = 9;
+    let resistance2_kp = 9;
+    let voltage_kp = 0;
+    let voltage1_kp = voltage_kp;
+    let voltage2_kp = voltage_kp;
+    let current1_kp = 0;
+    let current2_kp = 0;
+    let currentEk_kp = 0;
+
+    // Function to draw the circuit
+    function drawCircuit_kp() {
+      // Clear the canvas
+      ctx_kp.clearRect(0, 0, canvas_kp.width, canvas_kp.height);
+    
+             // part of drawing lines
+            ctx_kp.beginPath();
+            ctx_kp.moveTo(100*a, 100*a);
+            ctx_kp.lineTo(400*a, 100*a);
+            ctx_kp.lineTo(400*a, 400*a);
+            ctx_kp.lineTo(100*a, 400*a);
+            ctx_kp.closePath();
+            ctx_kp.stroke();
+            ctx_kp.beginPath();
+            ctx_kp.moveTo(100*a,265*a);
+            ctx_kp.lineTo(400*a,265*a);
+            ctx_kp.stroke();
+
+            // drawing battery
+
+            ctx_kp.beginPath();
+            ctx_kp.moveTo(220*a, 380*a);
+            ctx_kp.lineTo(220*a,420*a);
+            ctx_kp.lineTo(225*a,420*a);
+            ctx_kp.lineTo(225*a, 380*a)
+            ctx_kp.fill();
+            
+            ctx_kp.beginPath();
+            ctx_kp.moveTo(240*a, 390*a);
+            ctx_kp.lineTo(240*a,410*a);
+            ctx_kp.lineTo(245*a,410*a);
+            ctx_kp.lineTo(245*a, 390*a)
+            ctx_kp.fill();
+            // ctx.beginPath();
+            // ctx.moveTo(230, 380);
+            // ctx.lineTo(230,420);
+            // ctx.moveTo(250, 390);
+            // ctx.lineTo(250,410);
+            // ctx.stroke();
+            ctx_kp.font = '16px sans-serif';
+            ctx_kp.fillText(`V = ${voltage_kp} V`, 220*a, 460*a);
+
+            // drawing capasitor1
+            ctx_kp.beginPath();
+            ctx_kp.moveTo(200*a, 80*a);
+            ctx_kp.lineTo(200*a,120*a);
+            ctx_kp.lineTo(210*a,120*a);
+            ctx_kp.lineTo(210*a, 80*a)
+            ctx_kp.fill();
+            
+            ctx_kp.beginPath();
+            ctx_kp.moveTo(240*a, 80*a);
+            ctx_kp.lineTo(240*a,120*a);
+            ctx_kp.lineTo(250*a,120*a);
+            ctx_kp.lineTo(250*a, 80*a)
+            ctx_kp.fill();
+            ctx_kp.font = '16px sans-serif';
+            ctx_kp.fillText(`R1 = ${resistance1_kp} Ω`, 200*a, 75*a);
+            ctx_kp.fillText(`V1 = ${voltage1_kp.toFixed(2)} V`, 200*a, 135*a);
+
+            // drawing capasitor 2
+            ctx_kp.beginPath();
+            ctx_kp.moveTo(200*a, 245*a);
+            ctx_kp.lineTo(200*a,285*a);
+            ctx_kp.lineTo(210*a,285*a);
+            ctx_kp.lineTo(210*a,245*a)
+            ctx_kp.fill();
+            
+            ctx_kp.beginPath();
+            ctx_kp.moveTo(240*a, 245*a);
+            ctx_kp.lineTo(240*a,285*a);
+            ctx_kp.lineTo(250*a,285*a);
+            ctx_kp.lineTo(250*a,245*a)
+            ctx_kp.fill();
+            ctx_kp.font = '16px sans-serif';
+            ctx_kp.fillText(`R1 = ${resistance2_kp} Ω`, 200*a, 235*a);
+            ctx_kp.fillText(`V2 = ${voltage2_kp.toFixed(2)} V`, 200*a, 305*a);
+
+            // drawing arus 1
+            ctx_kp.rect(310*a, 98*a, 30*a, 5*a);
+            ctx_kp.fill();
+            ctx_kp.beginPath()
+            ctx_kp.moveTo(340*a, 95*a);
+            ctx_kp.lineTo(350*a,100*a);
+            ctx_kp.lineTo(340*a,105*a);
+            ctx_kp.fill();
+            ctx_kp.font = '16px sans-serif';
+            ctx_kp.fillText(`I1 = ${current1_kp.toFixed(2)} A`, 310*a, 75*a);
+
+             // drawing arus 2
+            ctx_kp.rect(310*a, 263*a, 30*a, 5*a);
+            ctx_kp.fill();
+            ctx_kp.beginPath()
+            ctx_kp.moveTo(340*a, 260*a);
+            ctx_kp.lineTo(350*a,265*a);
+            ctx_kp.lineTo(340*a,270*a);
+            ctx_kp.fill();
+            ctx_kp.font = '16px sans-serif';
+            ctx_kp.fillText(`I2 = ${current2_kp.toFixed(2)} A`, 310*a, 245*a);
+
+              // drawing arus total
+            ctx_kp.rect(97*a, 320*a, 5*a, 30*a);
+            ctx_kp.fill();
+            ctx_kp.beginPath()
+            ctx_kp.moveTo(97*a, 180*a);
+            ctx_kp.lineTo(87*a, 180*a);
+            ctx_kp.lineTo(107*a, 180*a);
+            ctx_kp.fill();
+            ctx_kp.font = '16px sans-serif';
+            ctx_kp.fillText(`I = ${currentEk_kp.toFixed(2)} A`, 20*a, 340*a);            
+            
+    }
+
+    // Draw the initial circuit
+    drawCircuit_kp();
+
+    // Update the resistance values when the sliders are moved
+    // 
+        function updateCircuit_kp() {
+        resistance1_kp = parseInt(slider1_kp.value);
+        resistance2_kp = parseInt(slider2_kp.value);
+        voltage_kp = parseInt(slider3_kp.value);
+
+        resistanceEk_kp = resistance1_kp + resistance2_kp;
+        voltage1_kp = (resistance1_kp / (resistance1_kp + resistance2_kp)) * voltage_kp;
+        voltage2_kp = (resistance2_kp / (resistance1_kp + resistance2_kp)) * voltage_kp;
+
+        current1_kp = voltage1_kp / resistance1_kp;
+        current2_kp = voltage2_kp / resistance2_kp;
+        currentEk_kp = voltage_kp / resistanceEk_kp;
+
+        drawCircuit_kp();
+    }
+
+    const slider1_kp = document.getElementById('resistor1-slider_kp');
+    const slider2_kp = document.getElementById('resistor2-slider_kp');
+    const slider3_kp = document.getElementById('voltage-slider_kp');
+    slider1_kp.addEventListener('input', updateCircuit_kp);
+    slider2_kp.addEventListener('input', updateCircuit_kp);
+    slider3_kp.addEventListener('input', updateCircuit_kp);
+
+    drawCircuit_kp();
+
+      // quiz
+        const pQuestionResistor = document.getElementById("questionresistor");
+        const containerquiz = document.getElementById("containerquiz");
+        const tombolquizresistor = document.getElementById("tombolquizresistor");
+        const containerquizresistor = document.getElementById("containerquizresistor");
+        tombolquizresistor.addEventListener("click", function(){
+            containerquiz.style.display = "none";
+            containerquizresistor.style.display = "flex";
+            pQuestionResistor.innerHTML = ""
+        });
+        const pQuestionKapasitor = document.getElementById("questionkapasitor");
+        const tombolquizkapasitor = document.getElementById("tombolquizkapasitor");
+        const containerquizkapasitor = document.getElementById("containerquizkapasitor");
+        tombolquizkapasitor.addEventListener("click", function(){
+            containerquiz.style.display = "none";
+            containerquizkapasitor.style.display = "flex";
+            containerquizresistor.style.display = "none";
+            pQuestionKapasitor.innerHTML = ""
+        });
+
+        const quizAwal = document.getElementById("quizAwal");
+        quizAwal.addEventListener("click", function(){
+            // containerquiz.style.display = "flex";
+            // containerquizkapasitor.style.display = "none";
+            // containerquizresistor.style.display = "none";
+            // questionElement.innerHTML = ""
+            // clearTimeout(displayTimer())
+            // timerElement.innerHTML = ""
+            // timeLeft1 = 0
+            //  questionElement1.textContent = ""
+            tombolquizAwal()
+        } )
+
+         function tombolquizAwal(){
+            containerquiz.style.display = "flex";
+            containerquizkapasitor.style.display = "none";
+            containerquizresistor.style.display = "none";
+            // questionElement.innerHTML = ""
+            // clearTimeout(displayTimer())
+            // timerElement.innerHTML = ""
+            // timeLeft1 = 0
+            //  questionElement1.textContent = ""
+        }
+
+        // resistor
+        const quiz = [
+  {
+    question: "Apa itu resistor dan apa fungsinya dalam sirkuit listrik?",
+    choices: ["Sebuah komponen elektronik yang digunakan untuk mengubah energi listrik menjadi energi mekanik", "Sebuah komponen elektronik yang digunakan untuk menyimpan muatan listrik.", "Sebuah komponen elektronik yang digunakan untuk mengurangi aliran arus listrik."],
+    correctAnswer: "Sebuah komponen elektronik yang digunakan untuk mengurangi aliran arus listrik."
+  },
+  {
+    question: "Bagaimana cara menghitung nilai resistansi sebuah resistor?",
+    choices: [" R = V/I", "R = I/V", "R = P/V"],
+    correctAnswer: " R = V/I"
+  },
+  {
+    question: "Apa itu resistensi total pada rangkaian resistor seri dan bagaimana cara menghitungnya?",
+    choices: [" Jumlah resistansi semua resistor pada rangkaian, dihitung dengan menjumlahkan nilai resistansi masing-masing resistor.", "Jumlah resistansi semua resistor pada rangkaian, dihitung dengan mengalikan nilai resistansi masing-masing resistor.", "Resistansi terbesar pada rangkaian, dihitung dengan membandingkan nilai resistansi masing-masing resisto"],
+    correctAnswer: " Jumlah resistansi semua resistor pada rangkaian, dihitung dengan menjumlahkan nilai resistansi masing-masing resistor."
+  }
+];
+
+const questionElement = document.getElementById("questionresistor");
+const choicesElement = document.getElementById("choicesresistor");
+const resultElement = document.getElementById("resultresistor");
+const timerElement = document.getElementById("timerresistor");
+const submitButton = document.getElementById("submitresistor");
+
+let currentQuestion = 0;
+let score = 0;
+const timeLimit = 10; // in seconds
+let timeLeft = timeLimit;
+let timerId; // Timer ID
+
+// Shuffle the elements of an array
+function shuffleArray(array) {
+  for (let i = array.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [array[i], array[j]] = [array[j], array[i]];
+  }
+  return array;
+}
+
+// Display the current question and choices
+function displayQuestion() {
+  // Shuffle the choices for the current question
+  const currentQuizQuestion = quiz[currentQuestion];
+  const shuffledChoices = shuffleArray(currentQuizQuestion.choices.slice());
+
+  // Display the question and shuffled choices
+  questionElement.textContent = currentQuizQuestion.question;
+  choicesElement.innerHTML = "";
+  for (let i = 0; i < shuffledChoices.length; i++) {
+    const choice = shuffledChoices[i];
+    const li = document.createElement("li");
+    li.textContent = choice;
+    li.addEventListener("click", function() {
+      if (choice === currentQuizQuestion.correctAnswer) {
+        score++;
+      }
+      if (currentQuestion === quiz.length - 1) {
+        clearTimeout(timerId);
+        displayResult();
+      } else {
+        currentQuestion++;
+        displayQuestion();
+      }
+    });
+    choicesElement.appendChild(li);
+  }
+}
+
+// Display the timer and update it every second
+function displayTimer() {
+  timerElement.textContent = `Time left: ${timeLeft} seconds`;
+  if (timeLeft === 0) {
+    clearTimeout(timerId);
+    displayResult();
+  } else {
+    timeLeft--;
+    timerId = setTimeout(displayTimer, 1000);
+  }
+}
+
+// Display the final result
+function displayResult() {
+  questionElement.textContent = `Your score is ${score} out of ${quiz.length}.`;
+  choicesElement.innerHTML = "";
+  resultElement.textContent = "";
+  // Reset the quiz for a new game
+  currentQuestion = 0;
+  score = 0;
+  timeLeft = timeLimit;
+  submitButton.style.display = "inline";
+  timerElement.style.display = "none";
+}
+
+// Start the quiz when the "Start" button is clicked
+submitButton.addEventListener("click", function() {
+  clearTimeout(timerId);
+  submitButton.style.display = "none";
+  timerElement.style.display = "block";
+  displayQuestion();
+  displayTimer();
+});
+
+// Hide the submit button and result when the page loads
+submitButton.style.display = "block";
+resultElement.textContent = "";
+
+// Hide the timer when it is not being displayed
+timerElement.style.display = "none";
+
+
+
+// const quiz = [
+//   {
+//     question: "Apa itu resistor dan apa fungsinya dalam sirkuit listrik?",
+//     choices: ["Sebuah komponen elektronik yang digunakan untuk mengubah energi listrik menjadi energi mekanik", "Sebuah komponen elektronik yang digunakan untuk menyimpan muatan listrik.", "Sebuah komponen elektronik yang digunakan untuk mengurangi aliran arus listrik."],
+//     correctAnswer: "Sebuah komponen elektronik yang digunakan untuk mengurangi aliran arus listrik."
+//   },
+//   {
+//     question: "Bagaimana cara menghitung nilai resistansi sebuah resistor?",
+//     choices: [" R = V/I", "R = I/V", "R = P/V"],
+//     correctAnswer: " R = V/I"
+//   },
+//   {
+//     question: "Apa itu resistensi total pada rangkaian resistor seri dan bagaimana cara menghitungnya?",
+//     choices: [" Jumlah resistansi semua resistor pada rangkaian, dihitung dengan menjumlahkan nilai resistansi masing-masing resistor.", "Jumlah resistansi semua resistor pada rangkaian, dihitung dengan mengalikan nilai resistansi masing-masing resistor.", "Resistansi terbesar pada rangkaian, dihitung dengan membandingkan nilai resistansi masing-masing resisto"],
+//     correctAnswer: " Jumlah resistansi semua resistor pada rangkaian, dihitung dengan menjumlahkan nilai resistansi masing-masing resistor."
+//   }
+// ];
+
+// const questionElement = document.getElementById("questionresistor");
+// const choicesElement = document.getElementById("choicesresistor");
+// const resultElement = document.getElementById("resultresistor");
+// const timerElement = document.getElementById("timerresistor");
+// const submitButton = document.getElementById("submitresistor");
+
+// let currentQuestion = 0;
+// let score = 0;
+// const timeLimit = 10; // in seconds
+// let timeLeft = timeLimit;
+
+// // Shuffle the elements of an array
+// function shuffleArray(array) {
+//   for (let i = array.length - 1; i > 0; i--) {
+//     const j = Math.floor(Math.random() * (i + 1));
+//     [array[i], array[j]] = [array[j], array[i]];
+//   }
+//   return array;
+// }
+
+// // Display the current question and choices
+// function displayQuestion() {
+//   // Shuffle the choices for the current question
+//   const currentQuizQuestion = quiz[currentQuestion];
+//   const shuffledChoices = shuffleArray(currentQuizQuestion.choices.slice());
+
+  
+//   // Display the question and shuffled choices
+//   questionElement.textContent = currentQuizQuestion.question;
+//   choicesElement.innerHTML = "";
+//   for (let i = 0; i < shuffledChoices.length; i++) {
+//     const choice = shuffledChoices[i];
+//     const li = document.createElement("li");
+//     li.textContent = choice;
+//     li.addEventListener("click", function() {
+//       if (choice === currentQuizQuestion.correctAnswer) {
+//         score++;
+//       }
+//       if (currentQuestion === quiz.length - 1) {
+//         displayResult();
+//         //tombol mulai lagi
+//         quizAwal.innerHTML = "mulai lagi ?"
+//       } else {
+//         currentQuestion++;
+//         displayQuestion();
+//       }
+//     });
+//     choicesElement.appendChild(li);
+//   }
+// }
+
+// // Display the timer and update it every second
+// function displayTimer() {
+//   timerElement.textContent = `Time left: ${timeLeft} seconds`;
+//   if (timeLeft === 0) {
+//     displayResult();
+//   } else {
+//     timeLeft--;
+//     return setTimeout(displayTimer, 1000);
+//   }
+// }
+
+// // Display the final result
+// function displayResult() {
+//   questionElement.textContent = `Your score is ${score} out of ${quiz.length}.`;
+//   choicesElement.innerHTML = "";
+//   resultElement.textContent = "";
+//   // Reset the quiz for a new game
+//   currentQuestion = 0;
+//   score = 0;
+//   timeLeft = timeLimit;
+//   submitButton.style.display = "inline";
+//   timerElement.style.display ="inline";
+// }
+
+// // Start the quiz when the "Start" button is clicked
+// submitButton.addEventListener("click", function() {
+//   submitButton.style.display = "none";
+// displayQuestion();
+// displayTimer();
+// });
+
+// // Hide the submit button and result when the page loads
+// submitButton.style.display = "block";
+// resultElement.textContent = "";
+
+// // Hide the timer when it is not being displayed
+// timerElement.style.display = "block";
+
+// quiz kapasitor
+    const quiz1 = [
+  {
+    question1: "Bagaimana cara menghitung kapasitansi total pada rangkaian kapasitor seri?",
+    choices1: ["C = C1 + C2 + C3 + ...", "C = 1/(1/C1 + 1/C2 + 1/C3 + ...)", "C = C1 x C2 x C3 x ..."],
+    correctAnswer1: "C = 1/(1/C1 + 1/C2 + 1/C3 + ...)"
+  },
+  {
+    question1: "Apa itu kapasitor dan bagaimana prinsip kerjanya?",
+    choices1: ["Sebuah komponen elektronik yang digunakan untuk menyimpan muatan listrik.", "Sebuah perangkat yang digunakan untuk mengubah energi listrik menjadi energi mekanik.", "Sebuah resistor yang digunakan untuk menstabilkan arus listrik."],
+    correctAnswer1: "Sebuah komponen elektronik yang digunakan untuk menyimpan muatan listrik."
+  },
+  {
+    question1: "Bagaimana cara menghitung kapasitansi kapasitor?",
+    choices1: [" C = V/Q", "C = I/R", "C = Q/V"],
+    correctAnswer1: "C = Q/V"
+  }
+];
+const questionElement1 = document.getElementById("questionkapasitor");
+const choicesElement1 = document.getElementById("choiceskapasitor");
+const resultElement1 = document.getElementById("resultkapasitor");
+const timerElement1 = document.getElementById("timerkapasitor");
+const submitButton1 = document.getElementById("submitkapasitor");
+
+let currentQuestion1 = 0;
+let score1 = 0;
+const timeLimit1= 10; // in seconds
+let timeLeft1 = timeLimit1;
+let timerId1; // Timer ID
+
+// Shuffle the elements of an array
+function shuffleArray(array) {
+  for (let i = array.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [array[i], array[j]] = [array[j], array[i]];
+  }
+  return array;
+}
+
+// Display the current question and choices
+function displayQuestion1() {
+  // Shuffle the choices for the current question
+  const currentQuizQuestion1 = quiz1[currentQuestion1];
+  const shuffledChoices1 = shuffleArray(currentQuizQuestion1.choices1.slice());
+
+  // Display the question and shuffled choices
+  questionElement1.textContent = currentQuizQuestion1.question1;
+  choicesElement1.innerHTML = "";
+  for (let i = 0; i < shuffledChoices1.length; i++) {
+    const choice = shuffledChoices1[i];
+    const li = document.createElement("li");
+    li.textContent = choice;
+    li.addEventListener("click", function() {
+      if (choice === currentQuizQuestion1.correctAnswer1) {
+        score++;
+      }
+      if (currentQuestion1 === quiz1.length - 1) {
+        clearTimeout(timerId1);
+        displayResult1();
+      } else {
+        currentQuestion1++;
+        displayQuestion1();
+      }
+    });
+    choicesElement1.appendChild(li);
+  }
+}
+
+// Display the timer and update it every second
+function displayTimer1() {
+  timerElement1.textContent = `Time left: ${timeLeft1} seconds`;
+  if (timeLeft1 === 0) {
+    clearTimeout(timerId1);
+    displayResult1();
+  } else {
+    timeLeft1--;
+    timerId1 = setTimeout(displayTimer1, 1000);
+  }
+}
+
+// Display the final result
+function displayResult1() {
+  questionElement1.textContent = `Your score is ${score1} out of ${quiz1.length}.`;
+  choicesElement1.innerHTML = "";
+  resultElement1.textContent = "";
+  // Reset the quiz for a new game
+  currentQuestion1 = 0;
+  score1 = 0;
+  timeLeft1 = timeLimit1;
+  submitButton1.style.display = "inline";
+  timerElement1.style.display = "none";
+}
+
+// Start the quiz when the "Start" button is clicked
+submitButton1.addEventListener("click", function() {
+  clearTimeout(timerId1);
+  submitButton1.style.display = "none";
+  timerElement1.style.display = "block";
+  displayQuestion1();
+  displayTimer1();
+});
+
+// Hide the submit button and result when the page loads
+submitButton1.style.display = "block";
+resultElement1.textContent = "";
+
+// Hide the timer when it is not being displayed
+timerElement1.style.display = "none";
+
+
+// let currentQuestion1 = 0;
+// let score1 = 0;
+// const timeLimit1 = 10; // in seconds
+// let timeLeft1 = timeLimit1;
+
+// // Shuffle the elements of an array
+// function shuffleArray1(array) {
+//   for (let i = array.length - 1; i > 0; i--) {
+//     const j = Math.floor(Math.random() * (i + 1));
+//     [array[i], array[j]] = [array[j], array[i]];
+//   }
+//   return array;
+// }
+// // Display the current question and choices
+// function displayQuestion1() {
+//   // Shuffle the choices for the current question
+//   const currentQuizQuestion1 = quiz1[currentQuestion1];
+//   const shuffledChoices1 = shuffleArray1(currentQuizQuestion1.choices1.slice());  
+//   // Display the question and shuffled choices
+//   questionElement1.textContent = currentQuizQuestion1.question1;
+//   choicesElement1.innerHTML = "";
+//   for (let i = 0; i < shuffledChoices1.length; i++) {
+//     const choice1 = shuffledChoices1[i];
+//     const li = document.createElement("li");
+//     li.textContent = choice1;
+//     li.addEventListener("click", function() {
+//       if (choice1 === currentQuizQuestion1.correctAnswer1) {
+//         score1++;
+//       }
+//       if (currentQuestion1 === quiz1.length - 1) {
+//         displayResult1();
+//         // tombol menu quiz muncul
+//       } else {
+//         currentQuestion1++;
+//         displayQuestion1();
+//       }
+//     });
+//     choicesElement1.appendChild(li);
+//   }
+// }
+// // Display the timer and update it every second
+// function displayTimer1() {
+//   timerElement1.textContent = `Time left: ${timeLeft1} seconds`;
+//   if (timeLeft1 === 0) {
+//     displayResult1();
+//   } else {
+//     timeLeft1--;
+//     setTimeout(displayTimer1, 1000);
+//   }
+// }
+// // Display the final result
+// function displayResult1() {
+//   questionElement1.textContent = `Your score is ${score1} out of ${quiz1.length}.`;
+//   choicesElement1.innerHTML = "";
+//   resultElement1.textContent = "";
+//   // Reset the quiz for a new game
+//   currentQuestion1 = 0;
+//   score1 = 0;
+// //   timeLeft1 = timeLimit1;
+//   submitButton1.style.display = "inline";
+//   timerElement1.style.display ="inline";
+// }
+// // Start the quiz when the "Start" button is clicked
+// submitButton1.addEventListener("click", function() {
+//   submitButton1.style.display = "none";
+// displayQuestion1();
+// displayTimer1();
+// });
+
+// // Hide the submit button and result when the page loads
+// submitButton1.style.display = "block";
+// resultElement1.textContent = "";
+
+// // Hide the timer when it is not being displayed
+// timerElement1.style.display = "block";
+
+
+    </script>
+</body>
+</html>
