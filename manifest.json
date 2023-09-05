@@ -1,0 +1,28 @@
+{
+
+    "name" : "Petunjuk Pratikum resistor dan kapasotor",
+    "short_name" : "Petunjuk Praktikum",
+    "start_url" : "coba143.html", 
+    "display": "standalone",
+    "$description" : "Petunjuk Pratikum resistor dan kapasotor",
+    "icons": [
+   {
+      "src": "/icon/circuit.png",
+      "type": "image/png",
+      "sizes": "512x512"
+   },
+   {
+      "src": "/icon/circuit1.png",
+      "type": "image/png",
+      "sizes": "1024x1024"
+   },
+   {
+      "src": "/icon/circuit.png",
+      "type": "image/png",
+      "sizes": "512x512",
+      "purpose": "maskable"
+   }
+],
+"background_color" : "#cacaca",
+"theme_color" : "#cacaca"
+}
